@@ -13,12 +13,20 @@ namespace RangeOfChars
             bool actual = digits.Match(text);
             Assert.True(actual);
         }
-
         [Fact]
-        public void For_ABCg_Should_Return_False()
+        public void For_CBA_Should_Return_True()
         {
             var digits = new Range('a', 'f');
-            string text = "abcg";
+            string text = "abc";
+            bool actual = digits.Match(text);
+            Assert.True(actual);
+        }
+
+        [Fact]
+        public void For_gABC_Should_Return_False()
+        {
+            var digits = new Range('a', 'f');
+            string text = "gbcg";
             bool actual = digits.Match(text);
             Assert.False(actual);
         }
@@ -53,7 +61,7 @@ namespace RangeOfChars
         public void For_A_Space_In_String_Should_Return_False()
         {
             var digits = new Range('a', 'f');
-            string text = "ab c ";
+            string text = " abc ";
             bool actual = digits.Match(text);
             Assert.False(actual);
         }

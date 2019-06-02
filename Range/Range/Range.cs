@@ -17,21 +17,16 @@ namespace RangeOfChars
 
         public bool Match(string text)
         {
-            bool result = true;
             if (String.IsNullOrEmpty(text))
             {
                 return false;
             }
             string textToLower = text.ToLower();
-            foreach (char c in text)
+            if (text[0] >= start && text[0] <= end)
             {
-                if (c >= start && c <= end)
-                {
-                    continue;
-                }
-                else return false;
+                return true;
             }
-            return result;
+            else return false;
         }
     }
 }
