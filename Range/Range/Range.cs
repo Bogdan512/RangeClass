@@ -21,12 +21,8 @@ namespace RangeOfChars
             {
                 return false;
             }
-            string textToLower = text.ToLower();
-            if (text[0] >= start && text[0] <= end)
-            {
-                return true;
-            }
-            else return false;
+
+            return  text[0] >= start && text[0] <= end;
         }
     }
 }
