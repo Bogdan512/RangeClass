@@ -15,7 +15,6 @@ namespace RangeOfChars
 
         public bool Match(string text)
         {
-            bool result = false;
 
             foreach (var pattern in patterns)
             {
@@ -24,7 +23,7 @@ namespace RangeOfChars
                     return true;
                 }
             }
-            return result;
+            return false;
         }
     }
 }
