@@ -30,13 +30,13 @@ namespace RangeOfChars.Test
         }
 
         [Fact]
-        public void Should_Return_False_For_92()
+        public void Should_Return_True_For_921()
         {
             var digit = new Choice(
                 new Character('0'),
-                new Range('2', '9')
+                new Range('1', '9')
             );
-            bool actual = digit.Match("92");
+            bool actual = digit.Match("921");
             Assert.True(actual);
         }
 
@@ -218,6 +218,48 @@ namespace RangeOfChars.Test
 
             bool actual = hex.Match("F8");
             Assert.True(actual);
+        }
+
+        [Fact]
+        public void Should_Return_False_For_g8()
+        {
+
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9')
+            );
+
+            var hex = new Choice(
+                digit,
+                new Choice(
+                    new Range('a', 'f'),
+                    new Range('A', 'F')
+                )
+            );
+
+            bool actual = hex.Match("g8");
+            Assert.False(actual);
+        }
+
+        [Fact]
+        public void Should_Return_False_For_G8()
+        {
+
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9')
+            );
+
+            var hex = new Choice(
+                digit,
+                new Choice(
+                    new Range('a', 'f'),
+                    new Range('A', 'F')
+                )
+            );
+
+            bool actual = hex.Match("G8");
+            Assert.False(actual);
         }
     }
 }
