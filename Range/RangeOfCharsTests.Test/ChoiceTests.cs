@@ -74,7 +74,7 @@ namespace RangeOfChars.Test
         }
 
         [Fact]
-        public void Should_Return_True_For_012()
+        public void Should_Return_True_For_012_Hex()
         {
 
             var digit = new Choice(
@@ -95,7 +95,7 @@ namespace RangeOfChars.Test
         }
 
         [Fact]
-        public void Should_Return_True_For_12()
+        public void Should_Return_True_For_12_Hex()
         {
 
             var digit = new Choice(
@@ -116,7 +116,7 @@ namespace RangeOfChars.Test
         }
 
         [Fact]
-        public void Should_Return_True_For_92()
+        public void Should_Return_True_For_92_Hex()
         {
 
             var digit = new Choice(
@@ -137,7 +137,7 @@ namespace RangeOfChars.Test
         }
 
         [Fact]
-        public void Should_Return_True_For_a9()
+        public void Should_Return_True_For_a9_Hex()
         {
 
             var digit = new Choice(
@@ -158,7 +158,7 @@ namespace RangeOfChars.Test
         }
 
         [Fact]
-        public void Should_Return_True_For_f8()
+        public void Should_Return_True_For_f8_Hex()
         {
 
             var digit = new Choice(
@@ -179,7 +179,7 @@ namespace RangeOfChars.Test
         }
 
         [Fact]
-        public void Should_Return_True_For_A9()
+        public void Should_Return_True_For_A9_Hex()
         {
 
             var digit = new Choice(
@@ -200,7 +200,7 @@ namespace RangeOfChars.Test
         }
 
         [Fact]
-        public void Should_Return_True_For_F8()
+        public void Should_Return_True_For_F8_Hex()
         {
 
             var digit = new Choice(
@@ -221,7 +221,7 @@ namespace RangeOfChars.Test
         }
 
         [Fact]
-        public void Should_Return_False_For_g8()
+        public void Should_Return_False_For_g8_Hex()
         {
 
             var digit = new Choice(
@@ -242,7 +242,7 @@ namespace RangeOfChars.Test
         }
 
         [Fact]
-        public void Should_Return_False_For_G8()
+        public void Should_Return_False_For_G8_Hex()
         {
 
             var digit = new Choice(
@@ -259,6 +259,48 @@ namespace RangeOfChars.Test
             );
 
             bool actual = hex.Match("G8");
+            Assert.False(actual);
+        }
+
+        [Fact]
+        public void Should_Return_False_For_Empty_String_Hex()
+        {
+
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9')
+            );
+
+            var hex = new Choice(
+                digit,
+                new Choice(
+                    new Range('a', 'f'),
+                    new Range('A', 'F')
+                )
+            );
+
+            bool actual = hex.Match("");
+            Assert.False(actual);
+        }
+
+        [Fact]
+        public void Should_Return_False_For_Null_Hex()
+        {
+
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9')
+            );
+
+            var hex = new Choice(
+                digit,
+                new Choice(
+                    new Range('a', 'f'),
+                    new Range('A', 'F')
+                )
+            );
+
+            bool actual = hex.Match(null);
             Assert.False(actual);
         }
     }
