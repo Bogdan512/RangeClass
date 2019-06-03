@@ -6,9 +6,12 @@ namespace RangeOfChars
     {
         static void Main(string[] args)
         {
-            var digits = new Range('a', 'f');
-            string text = "abcg";
-            bool actual = digits.Match(text);
+            var digit = new Choice
+            (
+                new Character('0'),
+                new Range('1','9')
+            );
+            bool actual = digit.Match("1024");
             Console.WriteLine(actual);
 
             Console.Read();
