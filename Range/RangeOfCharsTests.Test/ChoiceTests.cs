@@ -10,8 +10,7 @@ namespace RangeOfChars.Test
         [Fact]
         public void Should_Return_True_For_Digit_0()
         {
-            var digit = new Choice
-            (
+            var digit = new Choice(
                 new Character('0'),
                 new Range('1','9')
             );
@@ -22,8 +21,7 @@ namespace RangeOfChars.Test
         [Fact]
         public void Should_Return_True_For_Range_1_To_9()
         {
-            var digit = new Choice
-            (
+            var digit = new Choice(
                 new Character('0'),
                 new Range('1', '9')
             );
@@ -34,8 +32,7 @@ namespace RangeOfChars.Test
         [Fact]
         public void Should_Return_False_For_92()
         {
-            var digit = new Choice
-            (
+            var digit = new Choice(
                 new Character('0'),
                 new Range('2', '9')
             );
@@ -46,8 +43,7 @@ namespace RangeOfChars.Test
         [Fact]
         public void Should_Return_False_For_a9()
         {
-            var digit = new Choice
-            (
+            var digit = new Choice(
                 new Character('0'),
                 new Range('2', '9')
             );
@@ -58,8 +54,7 @@ namespace RangeOfChars.Test
         [Fact]
         public void Should_Return_False_For_Empty_String()
         {
-            var digit = new Choice
-            (
+            var digit = new Choice(
                 new Character('0'),
                 new Range('2', '9')
             );
@@ -70,13 +65,33 @@ namespace RangeOfChars.Test
         [Fact]
         public void Should_Return_False_For_Null()
         {
-            var digit = new Choice
-            (
+            var digit = new Choice(
                 new Character('0'),
                 new Range('2', '9')
             );
             bool actual = digit.Match(null);
             Assert.False(actual);
+        }
+
+        [Fact]
+        public void Should_Return_True_For_digit()
+        {
+
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9')
+            );
+
+            var hex = new Choice(
+                digit,
+                new Choice(
+                    new Range('a', 'f'),
+                    new Range('A', 'F')
+                )
+            );
+
+            bool actual = hex.Match("012");
+            Assert.True(actual);
         }
     }
 }
