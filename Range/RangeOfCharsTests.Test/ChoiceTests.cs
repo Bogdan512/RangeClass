@@ -177,5 +177,47 @@ namespace RangeOfChars.Test
             bool actual = hex.Match("f8");
             Assert.True(actual);
         }
+
+        [Fact]
+        public void Should_Return_True_For_A9()
+        {
+
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9')
+            );
+
+            var hex = new Choice(
+                digit,
+                new Choice(
+                    new Range('a', 'f'),
+                    new Range('A', 'F')
+                )
+            );
+
+            bool actual = hex.Match("A9");
+            Assert.True(actual);
+        }
+
+        [Fact]
+        public void Should_Return_True_For_F8()
+        {
+
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9')
+            );
+
+            var hex = new Choice(
+                digit,
+                new Choice(
+                    new Range('a', 'f'),
+                    new Range('A', 'F')
+                )
+            );
+
+            bool actual = hex.Match("F8");
+            Assert.True(actual);
+        }
     }
 }
