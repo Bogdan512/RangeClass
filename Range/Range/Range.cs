@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RangeOfChars
 {
-    public class Range //: IPattern
+    public class Range : IPattern
     {
         char start;
         char end;
@@ -15,14 +15,14 @@ namespace RangeOfChars
             this.end = end;
         }
 
-        public bool Match(string text)
+        public IMatch Match(string text)
         {
-            if (String.IsNullOrEmpty(text))
+            if (String.IsNullOrEmpty(text) || text[0] < start || text[0] > end)
             {
-                return false;
+                return new Match(false, text);
             }
 
-            return  text[0] >= start && text[0] <= end;
+            return new Match(text[0] >= start && text[0] <= end, text.Substring(1));
         }
     }
 }
