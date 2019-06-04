@@ -17,11 +17,11 @@ namespace RangeOfChars
         {
             if (string.IsNullOrEmpty(text))
             {
-                return new Match(string.IsNullOrEmpty(text), text);
+                return new Match(false, text);
             }
             if(text[0] == pattern)
             {
-                return new Match(text[0] == pattern, text.Substring(1));
+                return new Match(true, text.Substring(1));
             }
             return new Match(false, text);
         }
