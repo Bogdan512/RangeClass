@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RangeOfChars
 {
-    class Match : IMatch
+    public class Match : IMatch
     {
         bool succes;
         string remainingText;
