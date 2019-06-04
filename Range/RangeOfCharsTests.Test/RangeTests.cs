@@ -8,7 +8,7 @@ namespace RangeOfChars
         [Fact]
         public void For_abc_Should_Return_True_From_Range_a_To_f()
         {
-            var digits = new Range('a','f');
+            var digits = new Range('a', 'f');
             string text = "abc";
             IMatch actual = digits.Match(text);
             Assert.True(actual.Succes());
@@ -20,7 +20,7 @@ namespace RangeOfChars
             var digits = new Range('a', 'f');
             string text = "abc";
             IMatch actual = digits.Match(text);
-            Assert.Equal("bc",actual.RemainingText());
+            Assert.Equal("bc", actual.RemainingText());
         }
 
         [Fact]
@@ -41,57 +41,41 @@ namespace RangeOfChars
             Assert.Equal("abc", actual.RemainingText());
         }
 
-        //[Fact]
-        //public void For_CBA_Should_Return_True()
-        //{
-        //    var digits = new Range('a', 'f');
-        //    string text = "abc";
-        //    bool actual = digits.Match(text);
-        //    Assert.True(actual);
-        //}
+        [Fact]
+        public void For_Empty_String_Should_Return_False()
+        {
+            var digits = new Range('a', 'f');
+            string text = "";
+            IMatch actual = digits.Match(text);
+            Assert.False(actual.Succes());
+        }
 
-        //[Fact]
-        //public void For_gABC_Should_Return_False()
-        //{
-        //    var digits = new Range('a', 'f');
-        //    string text = "gbcg";
-        //    bool actual = digits.Match(text);
-        //    Assert.False(actual);
-        //}
+        [Fact]
+        public void For_Empty_String_Should_Return_Empty_String()
+        {
+            var digits = new Range('a', 'f');
+            string text = "";
+            IMatch actual = digits.Match(text);
+            Assert.Equal("", actual.RemainingText());
+        }
 
-        //[Fact]
-        //public void For_1ABC_Should_Return_False()
-        //{
-        //    var digits = new Range('a', 'f');
-        //    string text = "1abc";
-        //    bool actual = digits.Match(text);
-        //    Assert.False(actual);
-        //}
+        [Fact]
+        public void For_Null_Should_Return_False()
+        {
+            var digits = new Range('a', 'f');
+            string text = null;
+            IMatch actual = digits.Match(text);
+            Assert.False(actual.Succes());
+        }
 
-        //[Fact]
-        //public void For_Null_String_Should_Return_False()
-        //{
-        //    var digits = new Range('a', 'f');
-        //    string text = "";
-        //    bool actual = digits.Match(text);
-        //    Assert.False(actual);
-        //}
-
-        //[Fact]
-        //public void For_Empty_Should_Return_False()
-        //{
-        //    var digits = new Range('a', 'f');
-        //    string text = " ";
-        //    bool actual = digits.Match(text);
-        //    Assert.False(actual);
-        //}
-        //[Fact]
-        //public void For_A_Space_In_String_Should_Return_False()
-        //{
-        //    var digits = new Range('a', 'f');
-        //    string text = " abc ";
-        //    bool actual = digits.Match(text);
-        //    Assert.False(actual);
-        //}
+        [Fact]
+        public void For_Null_Should_Return_Null()
+        {
+            var digits = new Range('a', 'f');
+            string text = null;
+            IMatch actual = digits.Match(text);
+            Assert.Null(actual.RemainingText());
+        }
     }
+
 }
