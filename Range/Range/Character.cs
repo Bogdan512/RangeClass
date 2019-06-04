@@ -15,19 +15,15 @@ namespace RangeOfChars
 
         public IMatch Match(string text)
         {
-            bool result;
             if (string.IsNullOrEmpty(text))
             {
-                result = false;
-                return new Match(result, text);
+                return new Match(string.IsNullOrEmpty(text), text);
             }
             if(text[0] == pattern)
             {
-                result = true;
-                return new Match(result, text.Substring(1));
+                return new Match(text[0] == pattern, text.Substring(1));
             }
-            result = false;
-            return new Match(result, text);
+            return new Match(false, text);
         }
     }
 }
