@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RangeOfChars
 {
-    public class Choice : IPattern
+    public class Choice// : IPattern
     {
         IPattern[] patterns;
 
@@ -18,10 +18,10 @@ namespace RangeOfChars
 
             foreach (var pattern in patterns)
             {
-                if (pattern.Match(text))
-                {
-                    return true;
-                }
+                //if (pattern.Match(text))
+                //{
+                //    return true;
+                //}
             }
             return false;
         }

@@ -6,6 +6,6 @@ namespace RangeOfChars
 {
     public interface IPattern
     {
-        bool Match(string text);
+        IMatch Match(string text);
     }
 }

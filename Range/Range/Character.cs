@@ -13,12 +13,21 @@ namespace RangeOfChars
             this.pattern = pattern;
         }
 
-        public bool Match(string text)
+        public IMatch Match(string text)
         {
+            bool result;
             if (string.IsNullOrEmpty(text))
-                return false;
-
-            return text[0] == pattern;
+            {
+                result = false;
+                return new Match(result, text);
+            }
+            if(text[0] == pattern)
+            {
+                result = true;
+                return new Match(result, text.Substring(1));
+            }
+            result = false;
+            return new Match(result, text);
         }
     }
 }

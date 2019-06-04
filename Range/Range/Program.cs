@@ -6,13 +6,10 @@ namespace RangeOfChars
     {
         static void Main(string[] args)
         {
-            var digit = new Choice
-            (
-                new Character('0'),
-                new Range('1','9')
-            );
-            bool actual = digit.Match("1024");
-            Console.WriteLine(actual);
+            var character = new Character('b');
+            string text = "abc";
+            IMatch actual = character.Match(text);
+            Console.WriteLine(actual.Succes());
 
             Console.Read();
         }
