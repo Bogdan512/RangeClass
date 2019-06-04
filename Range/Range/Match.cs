@@ -6,15 +6,22 @@ namespace RangeOfChars
 {
     class Match : IMatch
     {
+        bool succes;
+        string remainingText;
 
+        public Match(bool succes, string remainingText)
+        {
+            this.succes = succes;
+            this.remainingText = remainingText;
+        }
         public bool Succes()
         {
-            return true;
+            return succes;
         }
 
         public string RemainingText()
         {
-            return "RemainingText";
+            return remainingText;
         }
     }
 }
