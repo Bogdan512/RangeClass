@@ -51,259 +51,110 @@ namespace RangeOfChars.Test
             Assert.Equal("2",actual.RemainingText());
         }
 
-        //[Fact]
-        //public void Should_Return_True_For_921()
-        //{
-        //    var digit = new Choice(
-        //        new Character('0'),
-        //        new Range('1', '9')
-        //    );
-        //    bool actual = digit.Match("921");
-        //    Assert.True(actual);
-        //}
+        [Fact]
+        public void Should_Return_True_For_a9_Hex()
+        {
 
-        //[Fact]
-        //public void Should_Return_False_For_a9()
-        //{
-        //    var digit = new Choice(
-        //        new Character('0'),
-        //        new Range('2', '9')
-        //    );
-        //    bool actual = digit.Match("a9");
-        //    Assert.False(actual);
-        //}
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9')
+            );
 
-        //[Fact]
-        //public void Should_Return_False_For_Empty_String()
-        //{
-        //    var digit = new Choice(
-        //        new Character('0'),
-        //        new Range('2', '9')
-        //    );
-        //    bool actual = digit.Match("");
-        //    Assert.False(actual);
-        //}
+            var hex = new Choice(
+                digit,
+                new Choice(
+                    new Range('a', 'f'),
+                    new Range('A', 'F')
+                )
+            );
 
-        //[Fact]
-        //public void Should_Return_False_For_Null()
-        //{
-        //    var digit = new Choice(
-        //        new Character('0'),
-        //        new Range('2', '9')
-        //    );
-        //    bool actual = digit.Match(null);
-        //    Assert.False(actual);
-        //}
+            IMatch actual = hex.Match("a9");
+            Assert.True(actual.Succes());
+        }
 
-        //[Fact]
-        //public void Should_Return_True_For_012_Hex()
-        //{
+        [Fact]
+        public void Should_Return_Rest_Of_Text_For_True_For_a9_Hex()
+        {
 
-        //    var digit = new Choice(
-        //        new Character('0'),
-        //        new Range('1', '9')
-        //    );
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9')
+            );
 
-        //    var hex = new Choice(
-        //        digit,
-        //        new Choice(
-        //            new Range('a', 'f'),
-        //            new Range('A', 'F')
-        //        )
-        //    );
+            var hex = new Choice(
+                digit,
+                new Choice(
+                    new Range('a', 'f'),
+                    new Range('A', 'F')
+                )
+            );
 
-        //    bool actual = hex.Match("012");
-        //    Assert.True(actual);
-        //}
+            IMatch actual = hex.Match("a9");
+            Assert.Equal("9",actual.RemainingText());
+        }
 
-        //[Fact]
-        //public void Should_Return_True_For_12_Hex()
-        //{
+        [Fact]
+        public void Should_Return_False_For_g8_Hex()
+        {
 
-        //    var digit = new Choice(
-        //        new Character('0'),
-        //        new Range('1', '9')
-        //    );
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9')
+            );
 
-        //    var hex = new Choice(
-        //        digit,
-        //        new Choice(
-        //            new Range('a', 'f'),
-        //            new Range('A', 'F')
-        //        )
-        //    );
+            var hex = new Choice(
+                digit,
+                new Choice(
+                    new Range('a', 'f'),
+                    new Range('A', 'F')
+                )
+            );
 
-        //    bool actual = hex.Match("12");
-        //    Assert.True(actual);
-        //}
+            IMatch actual = hex.Match("g8");
+            Assert.False(actual.Succes());
+        }
 
-        //[Fact]
-        //public void Should_Return_True_For_92_Hex()
-        //{
+        [Fact]
+        public void Should_Return_RemainingText_For_False_For_g8_Hex()
+        {
 
-        //    var digit = new Choice(
-        //        new Character('0'),
-        //        new Range('1', '9')
-        //    );
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9')
+            );
 
-        //    var hex = new Choice(
-        //        digit,
-        //        new Choice(
-        //            new Range('a', 'f'),
-        //            new Range('A', 'F')
-        //        )
-        //    );
+            var hex = new Choice(
+                digit,
+                new Choice(
+                    new Range('a', 'f'),
+                    new Range('A', 'F')
+                )
+            );
 
-        //    bool actual = hex.Match("92");
-        //    Assert.True(actual);
-        //}
+            IMatch actual = hex.Match("g8");
+            Assert.Equal("g8",actual.RemainingText());
+        }
 
-        //[Fact]
-        //public void Should_Return_True_For_a9_Hex()
-        //{
+        [Fact]
+        public void Should_Return_False_For_Empty_String_Hex()
+        {
 
-        //    var digit = new Choice(
-        //        new Character('0'),
-        //        new Range('1', '9')
-        //    );
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9')
+            );
 
-        //    var hex = new Choice(
-        //        digit,
-        //        new Choice(
-        //            new Range('a', 'f'),
-        //            new Range('A', 'F')
-        //        )
-        //    );
+            var hex = new Choice(
+                digit,
+                new Choice(
+                    new Range('a', 'f'),
+                    new Range('A', 'F')
+                )
+            );
 
-        //    bool actual = hex.Match("a9");
-        //    Assert.True(actual);
-        //}
-
-        //[Fact]
-        //public void Should_Return_True_For_f8_Hex()
-        //{
-
-        //    var digit = new Choice(
-        //        new Character('0'),
-        //        new Range('1', '9')
-        //    );
-
-        //    var hex = new Choice(
-        //        digit,
-        //        new Choice(
-        //            new Range('a', 'f'),
-        //            new Range('A', 'F')
-        //        )
-        //    );
-
-        //    bool actual = hex.Match("f8");
-        //    Assert.True(actual);
-        //}
-
-        //[Fact]
-        //public void Should_Return_True_For_A9_Hex()
-        //{
-
-        //    var digit = new Choice(
-        //        new Character('0'),
-        //        new Range('1', '9')
-        //    );
-
-        //    var hex = new Choice(
-        //        digit,
-        //        new Choice(
-        //            new Range('a', 'f'),
-        //            new Range('A', 'F')
-        //        )
-        //    );
-
-        //    bool actual = hex.Match("A9");
-        //    Assert.True(actual);
-        //}
-
-        //[Fact]
-        //public void Should_Return_True_For_F8_Hex()
-        //{
-
-        //    var digit = new Choice(
-        //        new Character('0'),
-        //        new Range('1', '9')
-        //    );
-
-        //    var hex = new Choice(
-        //        digit,
-        //        new Choice(
-        //            new Range('a', 'f'),
-        //            new Range('A', 'F')
-        //        )
-        //    );
-
-        //    bool actual = hex.Match("F8");
-        //    Assert.True(actual);
-        //}
-
-        //[Fact]
-        //public void Should_Return_False_For_g8_Hex()
-        //{
-
-        //    var digit = new Choice(
-        //        new Character('0'),
-        //        new Range('1', '9')
-        //    );
-
-        //    var hex = new Choice(
-        //        digit,
-        //        new Choice(
-        //            new Range('a', 'f'),
-        //            new Range('A', 'F')
-        //        )
-        //    );
-
-        //    bool actual = hex.Match("g8");
-        //    Assert.False(actual);
-        //}
-
-        //[Fact]
-        //public void Should_Return_False_For_G8_Hex()
-        //{
-
-        //    var digit = new Choice(
-        //        new Character('0'),
-        //        new Range('1', '9')
-        //    );
-
-        //    var hex = new Choice(
-        //        digit,
-        //        new Choice(
-        //            new Range('a', 'f'),
-        //            new Range('A', 'F')
-        //        )
-        //    );
-
-        //    bool actual = hex.Match("G8");
-        //    Assert.False(actual);
-        //}
-
-        //[Fact]
-        //public void Should_Return_False_For_Empty_String_Hex()
-        //{
-
-        //    var digit = new Choice(
-        //        new Character('0'),
-        //        new Range('1', '9')
-        //    );
-
-        //    var hex = new Choice(
-        //        digit,
-        //        new Choice(
-        //            new Range('a', 'f'),
-        //            new Range('A', 'F')
-        //        )
-        //    );
-
-        //    bool actual = hex.Match("");
-        //    Assert.False(actual);
-        //}
+            IMatch actual = hex.Match("");
+            Assert.False(actual.Succes());
+        }
 
         //[Fact]
         //public void Should_Return_False_For_Null_Hex()
