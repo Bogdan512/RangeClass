@@ -156,25 +156,67 @@ namespace RangeOfChars.Test
             Assert.False(actual.Succes());
         }
 
-        //[Fact]
-        //public void Should_Return_False_For_Null_Hex()
-        //{
+        [Fact]
+        public void Should_Return_Empty_String_For_False_For_Empty_String_Hex()
+        {
 
-        //    var digit = new Choice(
-        //        new Character('0'),
-        //        new Range('1', '9')
-        //    );
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9')
+            );
 
-        //    var hex = new Choice(
-        //        digit,
-        //        new Choice(
-        //            new Range('a', 'f'),
-        //            new Range('A', 'F')
-        //        )
-        //    );
+            var hex = new Choice(
+                digit,
+                new Choice(
+                    new Range('a', 'f'),
+                    new Range('A', 'F')
+                )
+            );
 
-        //    bool actual = hex.Match(null);
-        //    Assert.False(actual);
-        //}
+            IMatch actual = hex.Match("");
+            Assert.Equal("",actual.RemainingText());
+        }
+
+        [Fact]
+        public void Should_Return_False_For_Null_Hex()
+        {
+
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9')
+            );
+
+            var hex = new Choice(
+                digit,
+                new Choice(
+                    new Range('a', 'f'),
+                    new Range('A', 'F')
+                )
+            );
+
+            IMatch actual = hex.Match(null);
+            Assert.False(actual.Succes());
+        }
+
+        [Fact]
+        public void Should_Return_Null_For_Null_Hex()
+        {
+
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9')
+            );
+
+            var hex = new Choice(
+                digit,
+                new Choice(
+                    new Range('a', 'f'),
+                    new Range('A', 'F')
+                )
+            );
+
+            IMatch actual = hex.Match(null);
+            Assert.Null(actual.RemainingText());
+        }
     }
 }
