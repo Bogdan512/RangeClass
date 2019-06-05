@@ -7,27 +7,49 @@ namespace RangeOfChars.Test
 {
     public class ChoiceTests
     {
-        //[Fact]
-        //public void Should_Return_True_For_Digit_0()
-        //{
-        //    var digit = new Choice(
-        //        new Character('0'),
-        //        new Range('1','9')
-        //    );
-        //    bool actual = digit.Match("024");
-        //    Assert.True(actual);
-        //}
+        [Fact]
+        public void Should_Return_True_For_Digit_0()
+        {
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9')
+            );
+            IMatch actual = digit.Match("024");
+            Assert.True(actual.Succes());
+        }
 
-        //[Fact]
-        //public void Should_Return_True_For_Range_1_To_9()
-        //{
-        //    var digit = new Choice(
-        //        new Character('0'),
-        //        new Range('1', '9')
-        //    );
-        //    bool actual = digit.Match("12");
-        //    Assert.True(actual);
-        //}
+        [Fact]
+        public void Should_Return_The_Rest_Of_The_text_For_True_For_Digit_0()
+        {
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9')
+            );
+            IMatch actual = digit.Match("024");
+            Assert.Equal("24",actual.RemainingText());
+        }
+
+        [Fact]
+        public void Should_Return_True_For_Range_1_To_9()
+        {
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9')
+            );
+            IMatch actual = digit.Match("12");
+            Assert.True(actual.Succes());
+        }
+
+        [Fact]
+        public void Should_Return_Remaining_Text_For_True_For_Range_1_To_9()
+        {
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9')
+            );
+            IMatch actual = digit.Match("12");
+            Assert.Equal("2",actual.RemainingText());
+        }
 
         //[Fact]
         //public void Should_Return_True_For_921()

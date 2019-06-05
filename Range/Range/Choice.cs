@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RangeOfChars
 {
-    public class Choice// : IPattern
+    public class Choice : IPattern
     {
         IPattern[] patterns;
 
@@ -13,17 +13,18 @@ namespace RangeOfChars
             this.patterns = patterns;
         }
 
-        public bool Match(string text)
+        public IMatch Match(string text)
         {
 
             foreach (var pattern in patterns)
             {
-                //if (pattern.Match(text))
-                //{
-                //    return true;
-                //}
+                IMatch returnPattern = pattern.Match(text);
+                if (returnPattern.Succes())
+                {
+                    return new Match(true,text.Substring(1));
+                }
             }
-            return false;
+            return new Match(false, text);
         }
     }
 }
