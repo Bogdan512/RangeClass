@@ -22,6 +22,16 @@ namespace RangeOfChars
                 {
                     text = text.Substring(1);
                 }
+
+                if (!returnPattern.Succes() || text == "" )
+                {
+                    return new Match(false, text);
+                }
+
+                if (text == null)
+                {
+                    return new Match(false, null);
+                }
             }
             return new Match(true, text);
         }
