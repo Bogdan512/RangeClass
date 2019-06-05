@@ -6,9 +6,12 @@ namespace RangeOfChars
     {
         static void Main(string[] args)
         {
-            var character = new Character('b');
-            string text = "abc";
-            IMatch actual = character.Match(text);
+            var ab = new Sequance(
+                new Character('a'),
+                new Character('b')
+            );
+
+            IMatch actual = ab.Match("abcd");
             Console.WriteLine(actual.Succes());
 
             Console.Read();
