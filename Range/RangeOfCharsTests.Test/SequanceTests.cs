@@ -122,5 +122,45 @@ namespace RangeOfChars.Test
             IMatch actual = hexSeq.Match("u1234");
             Assert.Equal(string.Empty, actual.RemainingText());
         }
+
+        [Fact]
+        public void For_uabcdef_Should_Return_ef()
+        {
+            var hex = new Choice(
+                new Range('0', '9'),
+                new Range('a', 'f'),
+                new Range('A', 'F'));
+
+            var hexSeq = new Sequance(
+                new Character('u'),
+                new Sequance(
+                    hex,
+                    hex,
+                    hex,
+                    hex));
+
+            IMatch actual = hexSeq.Match("uabcdef");
+            Assert.Equal("ef", actual.RemainingText());
+        }
+
+        [Fact]
+        public void For_uabcdef_Should_Return_true()
+        {
+            var hex = new Choice(
+                new Range('0', '9'),
+                new Range('a', 'f'),
+                new Range('A', 'F'));
+
+            var hexSeq = new Sequance(
+                new Character('u'),
+                new Sequance(
+                    hex,
+                    hex,
+                    hex,
+                    hex));
+
+            IMatch actual = hexSeq.Match("uabcdef");
+            Assert.True(actual.Succes());
+        }
     }
 }
