@@ -17,12 +17,14 @@ namespace RangeOfChars
 
         public IMatch Match(string text)
         {
+            Console.WriteLine("Debug1" + text + " " + start + " " + end);
             if (String.IsNullOrEmpty(text) || text[0] < start || text[0] > end)
             {
+                Console.WriteLine("Debug 2 ");
                 return new Match(false, text);
             }
-
-            return new Match(text[0] >= start && text[0] <= end, text.Substring(1));
+            Console.WriteLine("Debug 3 ");
+            return new Match(true, text.Substring(1));
         }
     }
 }

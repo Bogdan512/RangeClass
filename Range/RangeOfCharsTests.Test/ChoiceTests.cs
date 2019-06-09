@@ -52,7 +52,7 @@ namespace RangeOfChars.Test
         }
 
         [Fact]
-        public void Should_Return_True_For_a9_Hex()
+        public void Should_Return_True_For_A9_Hex()
         {
 
             var digit = new Choice(
@@ -68,12 +68,12 @@ namespace RangeOfChars.Test
                 )
             );
 
-            IMatch actual = hex.Match("a9");
+            IMatch actual = hex.Match("A9");
             Assert.True(actual.Succes());
         }
 
         [Fact]
-        public void Should_Return_Rest_Of_Text_For_True_For_a9_Hex()
+        public void Should_Return_Rest_Of_Text_For_True_For_269_Hex()
         {
 
             var digit = new Choice(
@@ -89,8 +89,8 @@ namespace RangeOfChars.Test
                 )
             );
 
-            IMatch actual = hex.Match("a9");
-            Assert.Equal("9",actual.RemainingText());
+            IMatch actual = hex.Match("269");
+            Assert.Equal("69",actual.RemainingText());
         }
 
         [Fact]
@@ -132,7 +132,7 @@ namespace RangeOfChars.Test
             );
 
             IMatch actual = hex.Match("g8");
-            Assert.Equal("g8",actual.RemainingText());
+            Assert.Equal("g8", actual.RemainingText());
         }
 
         [Fact]
@@ -152,7 +152,7 @@ namespace RangeOfChars.Test
                 )
             );
 
-            IMatch actual = hex.Match("");
+            IMatch actual = hex.Match(string.Empty);
             Assert.False(actual.Succes());
         }
 
@@ -173,8 +173,8 @@ namespace RangeOfChars.Test
                 )
             );
 
-            IMatch actual = hex.Match("");
-            Assert.Equal("",actual.RemainingText());
+            IMatch actual = hex.Match(string.Empty);
+            Assert.Equal(string.Empty, actual.RemainingText());
         }
 
         [Fact]
@@ -217,6 +217,27 @@ namespace RangeOfChars.Test
 
             IMatch actual = hex.Match(null);
             Assert.Null(actual.RemainingText());
+        }
+
+        [Fact]
+        public void Should_Return_Empty_String_For_True_For_8_Hex()
+        {
+
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9')
+            );
+
+            var hex = new Choice(
+                digit,
+                new Choice(
+                    new Range('a', 'f'),
+                    new Range('A', 'F')
+                )
+            );
+
+            IMatch actual = hex.Match("8");
+            Assert.Equal(string.Empty, actual.RemainingText());
         }
     }
 }

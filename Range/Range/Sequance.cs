@@ -15,25 +15,15 @@ namespace RangeOfChars
 
         public IMatch Match(string text)
         {
-            foreach (var pattern in patterns)
+            foreach (var pattern in this.patterns)
             {
-                IMatch returnPattern = pattern.Match(text);
-                if (returnPattern.Succes())
+                IMatch imatch = pattern.Match(text);
+                if (imatch.Succes())
                 {
-                    text = text.Substring(1);
-                }
-
-                if (!returnPattern.Succes() || text == "" )
-                {
-                    return new Match(false, text);
-                }
-
-                if (text == null)
-                {
-                    return new Match(false, null);
+                    return new Match(true, text.Substring(1));
                 }
             }
-            return new Match(true, text);
+            return new Match(false, text);
         }
     }
 }

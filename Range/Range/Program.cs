@@ -4,15 +4,23 @@ namespace RangeOfChars
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            var ab = new Sequance(
-                new Character('a'),
-                new Character('b')
+            var digit = new Choice(
+                new Character('0'),
+                new Range('1', '9')
             );
 
-            IMatch actual = ab.Match("abcd");
-            Console.WriteLine(actual.Succes());
+            var hex = new Choice(
+                digit,
+                new Choice(
+                    new Range('a', 'f'),
+                    new Range('A', 'F')
+                )
+            );
+
+            IMatch actual = hex.Match("269");
+            Console.WriteLine(actual.RemainingText());
 
             Console.Read();
         }
