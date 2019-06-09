@@ -20,7 +20,7 @@ namespace RangeOfChars
                 IMatch match = pattern.Match(text);
                 if (match.Succes())
                 {
-                    text = match.RemainingText();
+
                     return match;
                 }
             }
