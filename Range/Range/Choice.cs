@@ -17,10 +17,11 @@ namespace RangeOfChars
         {
             foreach (var pattern in this.patterns)
             {
-                IMatch imatch = pattern.Match(text);
-                if (imatch.Succes())
+                IMatch match = pattern.Match(text);
+                if (match.Succes())
                 {
-                    return new Match(true, text.Substring(1));
+                    text = match.RemainingText();
+                    return match;
                 }
             }
 

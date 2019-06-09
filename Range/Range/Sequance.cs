@@ -17,13 +17,24 @@ namespace RangeOfChars
         {
             foreach (var pattern in this.patterns)
             {
-                IMatch imatch = pattern.Match(text);
-                if (imatch.Succes())
+                IMatch match = pattern.Match(text);
+                if (!match.Succes())
                 {
-                    return new Match(true, text.Substring(1));
+                    return new Match(false, text);
+                }
+
+                if (match.RemainingText() == string.Empty)
+                {
+                    return match;
+                }
+
+                if (match.Succes())
+                {
+                    text = match.RemainingText();
                 }
             }
-            return new Match(false, text);
+
+            return new Match(true, text);
         }
     }
 }
