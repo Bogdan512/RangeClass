@@ -162,5 +162,105 @@ namespace RangeOfChars.Test
             IMatch actual = hexSeq.Match("uabcdef");
             Assert.True(actual.Succes());
         }
+
+        [Fact]
+        public void For_uB005_ab_Should_Return_true()
+        {
+            var hex = new Choice(
+                new Range('0', '9'),
+                new Range('a', 'f'),
+                new Range('A', 'F'));
+
+            var hexSeq = new Sequance(
+                new Character('u'),
+                new Sequance(
+                    hex,
+                    hex,
+                    hex,
+                    hex));
+
+            IMatch actual = hexSeq.Match("uB005 ab");
+            Assert.True(actual.Succes());
+        }
+
+        [Fact]
+        public void For_uB005_ab_Should_Return__ab()
+        {
+            var hex = new Choice(
+                new Range('0', '9'),
+                new Range('a', 'f'),
+                new Range('A', 'F'));
+
+            var hexSeq = new Sequance(
+                new Character('u'),
+                new Sequance(
+                    hex,
+                    hex,
+                    hex,
+                    hex));
+
+            IMatch actual = hexSeq.Match("uB005 ab");
+            Assert.Equal(" ab", actual.RemainingText());
+        }
+
+        [Fact]
+        public void For_abc_Should_Return_false()
+        {
+            var hex = new Choice(
+                new Range('0', '9'),
+                new Range('a', 'f'),
+                new Range('A', 'F'));
+
+            var hexSeq = new Sequance(
+                new Character('u'),
+                new Sequance(
+                    hex,
+                    hex,
+                    hex,
+                    hex));
+
+            IMatch actual = hexSeq.Match("abc");
+            Assert.False(actual.Succes());
+        }
+
+        [Fact]
+        public void For_abc_Should_Return_abc()
+        {
+            var hex = new Choice(
+                new Range('0', '9'),
+                new Range('a', 'f'),
+                new Range('A', 'F'));
+
+            var hexSeq = new Sequance(
+                new Character('u'),
+                new Sequance(
+                    hex,
+                    hex,
+                    hex,
+                    hex));
+
+            IMatch actual = hexSeq.Match("abc");
+            Assert.Equal("abc", actual.RemainingText());
+        }
+
+        [Fact]
+        public void For_Null_Hex_Should_Return_Null()
+        {
+            var hex = new Choice(
+                new Range('0', '9'),
+                new Range('a', 'f'),
+                new Range('A', 'F'));
+
+            var hexSeq = new Sequance(
+                new Character('u'),
+                new Sequance(
+                    hex,
+                    hex,
+                    hex,
+                    hex));
+
+            IMatch actual = hexSeq.Match(null);
+            Assert.Null(actual.RemainingText());
+        }
     }
 }

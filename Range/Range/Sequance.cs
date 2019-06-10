@@ -20,18 +20,22 @@ namespace RangeOfChars
                 IMatch match = pattern.Match(text);
                 if (!match.Succes())
                 {
-                    return new Match(false, text);
-                }
-
-                if (match.RemainingText() == string.Empty)
-                {
                     return match;
                 }
-
-                if (match.Succes())
+                else
                 {
                     text = match.RemainingText();
                 }
+
+                //if (match.RemainingText() == string.Empty)
+                //{
+                //    return match;
+                //}
+
+                //if (match.Succes())
+                //{
+                //    text = match.RemainingText();
+                //}
             }
 
             return new Match(true, text);
