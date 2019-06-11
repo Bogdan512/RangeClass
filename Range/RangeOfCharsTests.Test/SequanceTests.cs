@@ -262,5 +262,35 @@ namespace RangeOfChars.Test
             IMatch actual = hexSeq.Match(null);
             Assert.Null(actual.RemainingText());
         }
+
+        [Fact]
+        public void For_ax_String_abc_Character_shoud_Return_False()
+        {
+            var ab = new Sequance(
+            new Character('a'),
+            new Character('b'));
+
+            var abc = new Sequance(
+            ab,
+            new Character('c'));
+
+            IMatch actual = abc.Match("ax");
+            Assert.False(actual.Succes());
+        }
+
+        [Fact]
+        public void For_ax_String_abc_Character_shoud_Return_False_And_ax()
+        {
+            var ab = new Sequance(
+            new Character('a'),
+            new Character('b'));
+
+            var abc = new Sequance(
+            ab,
+            new Character('c'));
+
+            IMatch actual = abc.Match("ax");
+            Assert.Equal("ax", actual.RemainingText());
+        }
     }
 }

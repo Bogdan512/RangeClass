@@ -15,30 +15,21 @@ namespace RangeOfChars
 
         public IMatch Match(string text)
         {
+            string copyOfText = text;
             foreach (var pattern in this.patterns)
             {
-                IMatch match = pattern.Match(text);
-                if (!match.Succes())
+                IMatch matchText = pattern.Match(text);
+                IMatch matchcopyOfText = pattern.Match(copyOfText);
+                if (!matchcopyOfText.Succes())
                 {
-                    return match;
-                }
-                else
-                {
-                    text = match.RemainingText();
+                    return matchText;
                 }
 
-                //if (match.RemainingText() == string.Empty)
-                //{
-                //    return match;
-                //}
-
-                //if (match.Succes())
-                //{
-                //    text = match.RemainingText();
-                //}
+                copyOfText = matchcopyOfText.RemainingText();
+                //text = matchText.RemainingText();
             }
 
-            return new Match(true, text);
+            return new Match(true, copyOfText);
         }
     }
 }

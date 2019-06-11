@@ -6,20 +6,15 @@ namespace RangeOfChars
     {
         static void Main()
         {
-            var hex = new Choice(
-                new Range('0', '9'),
-                new Range('a', 'f'),
-                new Range('A', 'F'));
+            var ab = new Sequance(
+            new Character('a'),
+            new Character('b'));
 
-            var hexSeq = new Sequance(
-                new Character('u'),
-                new Sequance(
-                    hex,
-                    hex,
-                    hex,
-                    hex));
+            var abc = new Sequance(
+            ab,
+            new Character('c'));
 
-            IMatch actual = hexSeq.Match("u1234");
+            IMatch actual = abc.Match("ax");
             Console.WriteLine(actual.RemainingText());
 
             Console.Read();
