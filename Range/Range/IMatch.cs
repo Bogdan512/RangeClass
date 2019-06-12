@@ -7,6 +7,7 @@ namespace RangeOfChars
     public interface IMatch
     {
         bool Succes();
+
         string RemainingText();
     }
 }

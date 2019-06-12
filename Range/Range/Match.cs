@@ -14,6 +14,7 @@ namespace RangeOfChars
             this.succes = succes;
             this.remainingText = remainingText;
         }
+
         public bool Succes()
         {
             return succes;
