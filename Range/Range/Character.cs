@@ -16,7 +16,7 @@ namespace RangeOfChars
         public IMatch Match(string text)
         {
             return string.IsNullOrEmpty(text) || text[0] != pattern 
-                ? (IMatch) new Match(false, text) 
+                ? (IMatch) new Match(false, text)
                 : new Match(true, text.Substring(1));
         }
     }
