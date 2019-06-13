@@ -6,16 +6,13 @@ namespace RangeOfChars
     {
         static void Main()
         {
-            var ab = new Sequance(
-            new Character('a'),
-            new Character('b'));
+            string accepted = "eE";
+            string text = "ea";
+            int index = accepted.IndexOf(text[0]);
 
-            var abc = new Sequance(
-            ab,
-            new Character('c'));
-
-            IMatch actual = abc.Match("ax");
-            Console.WriteLine(actual.RemainingText());
+            Console.WriteLine(index);
+            Console.WriteLine(text.Substring(1));
+            //Console.WriteLine(actual.RemainingText());
 
             Console.Read();
         }

@@ -38,5 +38,13 @@ namespace RangeOfChars.Test
             IMatch actual = e.Match("Ea");
             Assert.Equal("a", actual.RemainingText());
         }
+
+        [Fact]
+        public void For_Empty_String_Should_Return_Empty_String()
+        {
+            var e = new Any("eE");
+            IMatch actual = e.Match(string.Empty);
+            Assert.Equal(string.Empty, actual.RemainingText());
+        }
     }
 }
