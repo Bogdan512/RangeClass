@@ -15,8 +15,19 @@ namespace RangeOfChars
 
         public IMatch Match(string text)
         {
-            Character character = new Character(this.accepted[0]);
-            return character.Match(text);
+            IMatch match = new Match(true, text);
+
+            for (int i = 0; i < this.accepted.Length; i++)
+            {
+                Character character = new Character(this.accepted[i]);
+                if (this.accepted[i] == text[0])
+                {
+                    match = character.Match(match.RemainingText());
+                    return match;
+                }
+            }
+
+            return new Match(false, text);
         }
 
     }
