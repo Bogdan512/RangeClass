@@ -70,5 +70,21 @@ namespace RangeOfChars.Test
             IMatch actual = e.Match(string.Empty);
             Assert.False(actual.Succes());
         }
+
+        [Fact]
+        public void When_Constructor_String_MinusAndPlus_And_String_Plus3_Should_Return_True()
+        {
+            var sign = new Any("-+");
+            IMatch actual = sign.Match("+3");
+            Assert.True(actual.Succes());
+        }
+
+        [Fact]
+        public void When_Constructor_String_MinusAndPlus_And_String_Plus3_Should_Return_3()
+        {
+            var sign = new Any("-+");
+            IMatch actual = sign.Match("+3");
+            Assert.Equal("3", actual.RemainingText());
+        }
     }
 }
