@@ -118,5 +118,21 @@ namespace RangeOfChars.Test
             IMatch actual = sign.Match("2");
             Assert.Equal("2", actual.RemainingText());
         }
+
+        [Fact]
+        public void When_Constructor_String_MinusAndPlus_And_String_Null_Should_Return_False()
+        {
+            var sign = new Any("-+");
+            IMatch actual = sign.Match(null);
+            Assert.False(actual.Succes());
+        }
+
+        [Fact]
+        public void When_Constructor_String_MinusAndPlus_And_String_Null_Should_Return_Null()
+        {
+            var sign = new Any("-+");
+            IMatch actual = sign.Match(null);
+            Assert.Null(actual.RemainingText());
+        }
     }
 }
