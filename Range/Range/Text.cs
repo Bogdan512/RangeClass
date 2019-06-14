@@ -15,7 +15,7 @@ namespace RangeOfChars
 
         public IMatch Match(string text)
         {
-            if (string.IsNullOrEmpty(text))
+            if (string.IsNullOrEmpty(text) || text.Length < this.prefix.Length)
             {
                 return new Match(false, text);
             }
