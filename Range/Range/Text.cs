@@ -16,7 +16,7 @@ namespace RangeOfChars
         public IMatch Match(string text)
         {
             string substring = text.Substring(0, this.prefix.Length);
-            return substring == prefix
+            return substring == this.prefix
                 ? new Match(true, text.Substring(this.prefix.Length))
                 : new Match(false, text);
         }
