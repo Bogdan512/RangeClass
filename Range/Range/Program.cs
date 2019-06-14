@@ -6,12 +6,13 @@ namespace RangeOfChars
     {
         static void Main()
         {
-            string accepted = "eE";
-            string text = "ea";
-            int index = accepted.IndexOf(text[0]);
+            string isTrue = "True";
+            string text = "True";
+            string substring = text.Substring(0, isTrue.Length);
 
-            Console.WriteLine(index);
-            Console.WriteLine(text.Substring(1));
+            Console.WriteLine(substring);
+            Console.WriteLine(text.Substring(isTrue.Length));
+            //Console.WriteLine(text.Substring(1));
             //Console.WriteLine(actual.RemainingText());
 
             Console.Read();
