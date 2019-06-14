@@ -38,5 +38,37 @@ namespace RangeOfChars.Test
             IMatch actual = isTrue.Match("truex");
             Assert.Equal("x", actual.RemainingText());
         }
+
+        [Fact]
+        public void For_Constructor_True_And_Text_False_Should_Return_False()
+        {
+            var isTrue = new Text("true");
+            IMatch actual = isTrue.Match("false");
+            Assert.False(actual.Succes());
+        }
+
+        [Fact]
+        public void For_Constructor_True_And_Text_False_Should_Return_Text_false()
+        {
+            var isTrue = new Text("true");
+            IMatch actual = isTrue.Match("false");
+            Assert.Equal("false", actual.RemainingText());
+        }
+
+        [Fact]
+        public void For_Constructor_True_And_Text_Empty_String_Should_Return_False()
+        {
+            var isTrue = new Text("true");
+            IMatch actual = isTrue.Match("");
+            Assert.False(actual.Succes());
+        }
+
+        [Fact]
+        public void For_Constructor_True_And_Text_Empty_String_Should_Return_Empty_String()
+        {
+            var isTrue = new Text("true");
+            IMatch actual = isTrue.Match(string.Empty);
+            Assert.Equal(string.Empty, actual.RemainingText());
+        }
     }
 }
