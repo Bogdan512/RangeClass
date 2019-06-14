@@ -70,5 +70,21 @@ namespace RangeOfChars.Test
             IMatch actual = isTrue.Match(string.Empty);
             Assert.Equal(string.Empty, actual.RemainingText());
         }
+
+        [Fact]
+        public void For_Constructor_True_And_Text_Null_Should_Return_False()
+        {
+            var isTrue = new Text("true");
+            IMatch actual = isTrue.Match(null);
+            Assert.False(actual.Succes());
+        }
+
+        [Fact]
+        public void For_Constructor_True_And_Text_NUll_Should_Return_null()
+        {
+            var isTrue = new Text("true");
+            IMatch actual = isTrue.Match(null);
+            Assert.Equal(null, actual.RemainingText());
+        }
     }
 }
