@@ -150,5 +150,21 @@ namespace RangeOfChars.Test
             IMatch actual = isFalse.Match(string.Empty);
             Assert.Equal(string.Empty, actual.RemainingText());
         }
+
+        [Fact]
+        public void For_Constructor_False_And_Text_Null_Should_Return_False()
+        {
+            var isFalse = new Text("false");
+            IMatch actual = isFalse.Match(null);
+            Assert.False(actual.Succes());
+        }
+
+        [Fact]
+        public void For_Constructor_False_And_Text_Null_Should_Return_Null()
+        {
+            var isFalse = new Text("false");
+            IMatch actual = isFalse.Match(null);
+            Assert.Null(actual.RemainingText());
+        }
     }
 }
