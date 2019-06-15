@@ -27,9 +27,9 @@ namespace RangeOfChars
                 return new Match(false, text);
             }
 
-            string substring = text.Substring(0, this.prefix.Length);
+            bool textPrefix = text.StartsWith(this.prefix);
 
-            return substring == this.prefix && text.StartsWith(this.prefix[0])
+            return textPrefix
                 ? new Match(true, text.Substring(this.prefix.Length))
                 : new Match(false, text);
         }
