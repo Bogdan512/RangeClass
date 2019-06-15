@@ -88,11 +88,19 @@ namespace RangeOfChars.Test
         }
 
         [Fact]
-        public void For_Constructor_False_And_Text_False_Should_Return_True()
+        public void For_Constructor_False_And_Text_false_Should_Return_True()
         {
             var isFalse = new Text("false");
             IMatch actual = isFalse.Match("false");
             Assert.True(actual.Succes());
+        }
+
+        [Fact]
+        public void For_Constructor_false_And_Text_False_Should_Return_True()
+        {
+            var isFalse = new Text("false");
+            IMatch actual = isFalse.Match("False");
+            Assert.False(actual.Succes());
         }
 
         [Fact]
