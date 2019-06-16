@@ -6,14 +6,11 @@ namespace RangeOfChars
     {
         static void Main()
         {
-            string isFalse = "false";
-            string text = "true";
-            string substring = text.Substring(0, isFalse.Length);
-
-            Console.WriteLine(substring);
-            Console.WriteLine(text.Substring(isFalse.Length));
+            var a = new Many(new Character('a'));
+            IMatch actual = a.Match("abc");
             //Console.WriteLine(text.Substring(1));
-            //Console.WriteLine(actual.RemainingText());
+            Console.WriteLine(actual.Succes());
+            Console.WriteLine(actual.RemainingText());
 
             Console.Read();
         }
