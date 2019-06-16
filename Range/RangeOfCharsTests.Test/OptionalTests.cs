@@ -98,8 +98,24 @@ namespace RangeOfChars.Test
         [Fact]
         public void For_Character_Minus_and_String_123_Should_Return_123()
         {
-            var a = new Optional(new Character('a'));
+            var a = new Optional(new Character('-'));
             IMatch actual = a.Match("123");
+            Assert.Equal("123", actual.RemainingText());
+        }
+
+        [Fact]
+        public void For_Character_Minus_and_String_Minus123_Should_Return_true()
+        {
+            var sign = new Optional(new Character('-'));
+            IMatch actual = sign.Match("-123");
+            Assert.True(actual.Succes());
+        }
+
+        [Fact]
+        public void For_Character_Minus_and_String_Minus123_Should_Return_123()
+        {
+            var a = new Optional(new Character('-'));
+            IMatch actual = a.Match("-123");
             Assert.Equal("123", actual.RemainingText());
         }
     }
