@@ -22,5 +22,21 @@ namespace RangeOfChars.Test
             IMatch actual = a.Match("abc");
             Assert.Equal("bc", actual.RemainingText());
         }
+
+        [Fact]
+        public void Should_Consume_More_Characters_From_String()
+        {
+            var a = new OneOrMore(new Character('a'));
+            IMatch actual = a.Match("aaabc");
+            Assert.True(actual.Succes());
+        }
+
+        [Fact]
+        public void Should_Consume_More_Characters_From_String_With_RemainingTest_bc()
+        {
+            var a = new OneOrMore(new Character('a'));
+            IMatch actual = a.Match("aaabc");
+            Assert.Equal("bc", actual.RemainingText());
+        }
     }
 }
