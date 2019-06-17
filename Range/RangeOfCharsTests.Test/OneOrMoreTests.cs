@@ -38,5 +38,21 @@ namespace RangeOfChars.Test
             IMatch actual = a.Match("aaabc");
             Assert.Equal("bc", actual.RemainingText());
         }
+
+        [Fact]
+        public void Should_Return_False_When_No_Character_Is_Consumed()
+        {
+            var a = new OneOrMore(new Character('a'));
+            IMatch actual = a.Match("bc");
+            Assert.False(actual.Succes());
+        }
+
+        [Fact]
+        public void When_No_Character_Is_Consumed_Should_Return_Initial_Text()
+        {
+            var a = new OneOrMore(new Character('a'));
+            IMatch actual = a.Match("bc");
+            Assert.Equal("bc", actual.RemainingText());
+        }
     }
 }
