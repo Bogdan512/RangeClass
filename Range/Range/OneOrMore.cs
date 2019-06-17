@@ -4,24 +4,18 @@ using System.Text;
 
 namespace RangeOfChars
 {
-    public class Many :IPattern
+    public class OneOrMore : IPattern
     {
         IPattern pattern;
 
-        public Many(IPattern pattern)
+        public OneOrMore(IPattern pattern)
         {
             this.pattern = pattern;
         }
 
         public IMatch Match(string text)
         {
-
-            IMatch match = new Match(true, text);
-            while (match.Succes())
-            {
-                match = this.pattern.Match(match.RemainingText());
-            }
-
+            IMatch match = this.pattern.Match(text);
             return new Match(true, match.RemainingText());
         }
     }

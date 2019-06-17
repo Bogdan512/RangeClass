@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RangeOfChars
 {
-   public class Any
+   public class Any :IPattern
     {
         readonly string accepted;
 
