@@ -6,16 +6,16 @@ namespace RangeOfChars
 {
     public class OneOrMore : IPattern
     {
-        private readonly Many many;
+        private readonly Sequance sequance;
 
         public OneOrMore(IPattern pattern)
         {
-             this.many = new Many(pattern);
+             sequance = new Sequance(pattern, new Many(pattern));
         }
 
         public IMatch Match(string text)
         {
-            IMatch match = this.many.Match(text);
+            IMatch match = sequance.Match(text);
             return text == match.RemainingText()
                 ? new Match(false, match.RemainingText())
                 : new Match(true, match.RemainingText());
