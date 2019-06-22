@@ -18,9 +18,20 @@ namespace RangeOfChars
         public IMatch Match(string text)
         {
 
-            IMatch match = pattern.Match(text);
-            match = separator.Match(match.RemainingText());
-            return match;
+            IMatch patternMatch = this.pattern.Match(text);
+            IMatch separatorMatch;
+            while (patternMatch.Succes())
+            {
+                separatorMatch = this.separator.Match(patternMatch.RemainingText());
+                if (string.IsNullOrEmpty(separatorMatch.RemainingText()))
+                {
+                    return patternMatch;
+                }
+
+                patternMatch = this.pattern.Match(separatorMatch.RemainingText());
+            }
+
+            return new Match(true, patternMatch.RemainingText());
         }
     }
 }
