@@ -69,6 +69,17 @@ namespace RangeOfChars
                             }
                             return new Match(false, text);
                         }
+
+                    case '0':
+                        {
+                            if (i == 0 && text[i + 1] != '.' && text[i + 2] - 48 >= 0 && text[i + 2] - 48 <= 9
+                                || i == 2 && text[i - 1] != '.' && text[i - 2] - 48 >= 0 && text[i - 2] - 48 <= 9
+                                || i == 1 )
+                            {
+                                return new Match(false, text);
+                            }
+                            continue;
+                        }
                     default:
                         if (text[i] - 48 >= 1 && text[i] - 48 <= 9)
                         {
