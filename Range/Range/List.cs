@@ -6,32 +6,17 @@ namespace RangeOfChars
 {
     public class List : IPattern
     {
-        IPattern pattern;
-        IPattern separator;
+
+        private readonly Sequance sequance;
 
         public List(IPattern pattern, IPattern separator)
         {
-            this.pattern = pattern;
-            this.separator = separator;
+            this.sequance = new Sequance(pattern, new Many(new Sequance(separator, pattern)));
         }
 
         public IMatch Match(string text)
         {
-
-            IMatch patternMatch = this.pattern.Match(text);
-            IMatch separatorMatch;
-            while (patternMatch.Succes())
-            {
-                separatorMatch = this.separator.Match(patternMatch.RemainingText());
-                if (string.IsNullOrEmpty(separatorMatch.RemainingText()))
-                {
-                    return patternMatch;
-                }
-
-                patternMatch = this.pattern.Match(separatorMatch.RemainingText());
-            }
-
-            return new Match(true, patternMatch.RemainingText());
+            return sequance.Match(text);
         }
     }
 }

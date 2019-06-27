@@ -8,11 +8,19 @@ namespace RangeOfChars.Test
     public class ListTests
     {
         [Fact]
-        public void It_Should_Consume_A_Pattern_And_A_Character_Returning_True()
+        public void It_Should_Consume_A_Pattern_Returning_True()
         {
             var a = new List(new Range('0', '9'), new Character(','));
             IMatch actual = a.Match("1");
             Assert.True(actual.Succes());
+        }
+
+        [Fact]
+        public void It_Should_Consume_A_Pattern_Returning_EmptyString()
+        {
+            var a = new List(new Range('0', '9'), new Character(','));
+            IMatch actual = a.Match("1");
+            Assert.Equal(string.Empty, actual.RemainingText());
         }
 
         [Fact]
@@ -113,6 +121,14 @@ namespace RangeOfChars.Test
 
             IMatch actual = list.Match("abc");
             Assert.Equal("abc", actual.RemainingText());
+        }
+
+        [Fact]
+        public void For_null_It_Should_Return_null()
+        {
+            var a = new List(new Range('0', '9'), new Character(','));
+            IMatch actual = a.Match(null);
+            Assert.Equal(null, actual.RemainingText());
         }
     }
 }
