@@ -88,6 +88,14 @@ namespace RangeOfChars.Test
         }
 
         [Fact]
+        public void For_Empty_String_It_Should_Return_True()
+        {
+            var a = new List(new Range('0', '9'), new Character(','));
+            IMatch actual = a.Match(string.Empty);
+            Assert.True(actual.Succes());
+        }
+
+        [Fact]
         public void For_Digits_Separators_NewLine_And_Tab_Should_Return_Empty_String()
         {
             var digits = new OneOrMore(new Range('0', '9'));
@@ -129,6 +137,14 @@ namespace RangeOfChars.Test
             var a = new List(new Range('0', '9'), new Character(','));
             IMatch actual = a.Match(null);
             Assert.Equal(null, actual.RemainingText());
+        }
+
+        [Fact]
+        public void For_null_It_Should_Return_true()
+        {
+            var a = new List(new Range('0', '9'), new Character(','));
+            IMatch actual = a.Match(null);
+            Assert.True(actual.Succes());
         }
     }
 }
