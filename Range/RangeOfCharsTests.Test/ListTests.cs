@@ -146,5 +146,21 @@ namespace RangeOfChars.Test
             IMatch actual = a.Match(null);
             Assert.True(actual.Succes());
         }
+
+        [Fact]
+        public void For_abc_ShouldReturn_True()
+        {
+            var a = new List(new Range('0', '9'), new Character(','));
+            var actual = a.Match("abc");
+            Assert.True(actual.Succes());
+        }
+
+        [Fact]
+        public void For_Abc_ShouldReturn_abc()
+        {
+            var a = new List(new Range('0', '9'), new Character(','));
+            var actual = a.Match("abc");
+            Assert.Equal("abc", actual.RemainingText());
+        }
     }
 }

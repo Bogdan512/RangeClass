@@ -16,11 +16,8 @@ namespace RangeOfChars
 
         public IMatch Match(string text)
         {
-            if (string.IsNullOrEmpty(text))
-            {
-                return new Match(true,text);
-            }
-            return sequance.Match(text);
+            IMatch match = this.sequance.Match(text);
+            return new Match(true, match.RemainingText());
         }
     }
 }
