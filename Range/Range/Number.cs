@@ -6,9 +6,11 @@ namespace RangeOfChars
     {
         private readonly IPattern pattern;
 
-        public Number(IPattern pattern)
+        public Number()
         {
-            this.pattern = new Sequance(pattern, new Many(pattern));
+            pattern = new Sequance(
+                    new Range('1', '9'),
+                    new Many(new Range('0', '9')));
         }
 
         public IMatch Match(string text)
