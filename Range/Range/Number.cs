@@ -8,7 +8,7 @@ namespace RangeOfChars
 
         public Number(IPattern pattern)
         {
-            this.pattern = pattern;
+            this.pattern = new Sequance(pattern, new Many(pattern));
         }
 
         public IMatch Match(string text)

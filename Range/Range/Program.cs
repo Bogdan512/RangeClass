@@ -6,8 +6,8 @@ namespace RangeOfChars
     {
         static void Main()
         {
-            var a = new List(new Range('0', '9'), new Character(','));
-            IMatch actual = a.Match("1");
+            var number = new Number(new Range('0', '9'));
+            IMatch actual = number.Match("2");
             Console.WriteLine(actual.Succes());
             Console.WriteLine(actual.RemainingText());
 
