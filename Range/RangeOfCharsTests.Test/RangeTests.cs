@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace RangeOfChars
+namespace RangeOfChars.Test
 {
     public class RangeTests
     {
