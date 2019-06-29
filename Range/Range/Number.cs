@@ -11,7 +11,9 @@ namespace RangeOfChars
             pattern = new Sequance(
                     new Optional(new Character('-')),
                     new Range('1', '9'),
-                    new Many(new Range('0', '9')));
+                    new Many(new Sequance(
+                        new Optional(
+                            new Character('.')), new Range('0', '9'))));
         }
 
         public IMatch Match(string text)

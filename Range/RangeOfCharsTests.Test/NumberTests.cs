@@ -68,5 +68,21 @@ namespace RangeOfChars.Test
             IMatch actual = number.Match("-207");
             Assert.Equal(string.Empty, actual.RemainingText());
         }
+
+        [Fact]
+        public void For_2Coma7_It_Should_Return_True()
+        {
+            var number = new Number();
+            IMatch actual = number.Match("2.7");
+            Assert.True(actual.Succes());
+        }
+
+        [Fact]
+        public void For_2354Coma7_It_Should_Return_EmptyString()
+        {
+            var number = new Number();
+            IMatch actual = number.Match("2354.7");
+            Assert.Equal(string.Empty, actual.RemainingText());
+        }
     }
 }
