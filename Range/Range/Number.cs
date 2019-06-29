@@ -6,9 +6,9 @@ namespace RangeOfChars
     {
         private readonly IPattern pattern;
 
-        public Number(IPattern pattern)
+        public Number()
         {
-            this.pattern = pattern;
+            this.pattern = new ValidateNumber();
         }
 
         public IMatch Match(string text)
