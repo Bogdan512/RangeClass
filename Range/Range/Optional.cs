@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RangeOfChars
 {
-    public class Optional
+    public class Optional : IPattern
     {
         IPattern pattern;
 

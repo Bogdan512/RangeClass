@@ -6,7 +6,7 @@ namespace RangeOfChars
     {
         static void Main()
         {
-            var number = new Number(new Range('0', '9'));
+            var number = new Number();
             IMatch actual = number.Match("2");
             Console.WriteLine(actual.Succes());
             Console.WriteLine(actual.RemainingText());
