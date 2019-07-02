@@ -54,5 +54,21 @@ namespace RangeOfChars.Test
             IMatch actual = a.Match("bc");
             Assert.Equal("bc", actual.RemainingText());
         }
+
+        [Fact]
+        public void For_aabac_Should_Return_True()
+        {
+            var a = new OneOrMore(new Character('a'));
+            IMatch actual = a.Match("aabac");
+            Assert.True(actual.Succes());
+        }
+
+        [Fact]
+        public void For_aabac_Should_Return_bac()
+        {
+            var a = new OneOrMore(new Character('a'));
+            IMatch actual = a.Match("aabac");
+            Assert.Equal("bac", actual.RemainingText());
+        }
     }
 }

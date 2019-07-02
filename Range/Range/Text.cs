@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RangeOfChars
 {
-    public class Text
+    public class Text : IPattern
     {
         string prefix;
 

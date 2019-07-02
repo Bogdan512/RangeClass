@@ -6,19 +6,51 @@ namespace RangeOfChars.Test
     public class NumberTests
     {
         [Fact]
-        public void For_20Coma2ComaComa521_It_Should_Return_False()
+        public void For_201_It_Should_Return_True()
         {
             var number = new Number();
-            IMatch actual = number.Match("20.2..521");
+            IMatch actual = number.Match("201");
+            Assert.True(actual.Succes());
+        }
+
+        [Fact]
+        public void For_201_It_Should_Return_EmptyString()
+        {
+            var number = new Number();
+            IMatch actual = number.Match("201");
+            Assert.Equal(string.Empty, actual.RemainingText());
+        }
+
+        [Fact]
+        public void For_0201_It_Should_Return_False()
+        {
+            var number = new Number();
+            IMatch actual = number.Match("0201");
             Assert.False(actual.Succes());
         }
 
         [Fact]
-        public void For_20Coma2ComaComa521_It_Should_Return_20Coma2ComaComa521()
+        public void For_0201_It_Should_Return_0201()
         {
             var number = new Number();
-            IMatch actual = number.Match("20.2..521");
-            Assert.Equal("20.2..521", actual.RemainingText());
+            IMatch actual = number.Match("0201");
+            Assert.Equal("0201", actual.RemainingText());
+        }
+
+        [Fact]
+        public void For_Minus201_It_Should_Return_True()
+        {
+            var number = new Number();
+            IMatch actual = number.Match("-201");
+            Assert.True(actual.Succes());
+        }
+
+        [Fact]
+        public void For_Minus201_It_Should_Return_EmptyStirng()
+        {
+            var number = new Number();
+            IMatch actual = number.Match("-201");
+            Assert.Equal(string.Empty, actual.RemainingText());
         }
 
         //[Fact]
