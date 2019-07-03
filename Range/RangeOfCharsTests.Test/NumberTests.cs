@@ -85,6 +85,37 @@ namespace RangeOfChars.Test
             Assert.Equal(string.Empty, actual.RemainingText());
         }
 
+        [Fact]
+        public void For_0Coma708_It_Should_Return_True()
+        {
+            var number = new Number();
+            IMatch actual = number.Match("0.708");
+            Assert.True(actual.Succes());
+        }
+
+        [Fact]
+        public void For_0Coma708_It_Should_Return_EmptyString()
+        {
+            var number = new Number();
+            IMatch actual = number.Match("0.708");
+            Assert.Equal(string.Empty, actual.RemainingText());
+        }
+
+        [Fact]
+        public void For_0Coma70Comma8_It_Should_Return_False()
+        {
+            var number = new Number();
+            IMatch actual = number.Match("0.70.8");
+            Assert.True(actual.Succes());
+        }
+
+        [Fact]
+        public void For_0Coma70Comma8_It_Should_Return_Comma8()
+        {
+            var number = new Number();
+            IMatch actual = number.Match("0.70.8");
+            Assert.Equal(".8", actual.RemainingText());
+        }
 
         //[Fact]
         //public void For_2Coma7_It_Should_Return_True()
