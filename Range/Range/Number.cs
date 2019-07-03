@@ -11,10 +11,12 @@ namespace RangeOfChars
 
         public Number()
         {
- 
-
-            patternSignNr = new Choice(new Sequance(new Optional(new Character('-')), new OneOrMore(new Range('1', '9')), new Many(new Range('0', '9'))));
-            pattern = patternSignNr;
+            var minus = new Optional(new Character('-'));
+            var digit = new Range('0', '9');
+            var digits = new Many(digit);
+            var natural = new Sequance(new Range('1', '9'), digits);
+            var integer = new Sequance(minus, natural);
+            pattern = new Choice(integer);
 
         }
 
