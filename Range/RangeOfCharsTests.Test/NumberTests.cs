@@ -148,5 +148,53 @@ namespace RangeOfChars.Test
             IMatch actual = number.Match("2.75.43");
             Assert.Equal(".43", actual.RemainingText());
         }
+
+        [Fact]
+        public void For_12Dot123e3_It_Should_Return_True()
+        {
+            var number = new Number();
+            IMatch actual = number.Match("12.123e3");
+            Assert.True(actual.Succes());
+        }
+
+        [Fact]
+        public void For_12Dot123e3_It_Should_Return_EmptyString()
+        {
+            var number = new Number();
+            IMatch actual = number.Match("12.123e3");
+            Assert.Equal(string.Empty, actual.RemainingText());
+        }
+
+        [Fact]
+        public void For_12Dot123ePlus3_It_Should_Return_True()
+        {
+            var number = new Number();
+            IMatch actual = number.Match("12.123e+3");
+            Assert.True(actual.Succes());
+        }
+
+        [Fact]
+        public void For_12Dot123ePlus3_It_Should_Return_EmptyString()
+        {
+            var number = new Number();
+            IMatch actual = number.Match("12.123e+3");
+            Assert.Equal(string.Empty, actual.RemainingText());
+        }
+
+        [Fact]
+        public void For_12Dot123EMinus3_It_Should_Return_True()
+        {
+            var number = new Number();
+            IMatch actual = number.Match("12.123E-3");
+            Assert.True(actual.Succes());
+        }
+
+        [Fact]
+        public void For_12Dot123EMinus3_It_Should_Return_EmptyString()
+        {
+            var number = new Number();
+            IMatch actual = number.Match("12.123E-3");
+            Assert.Equal(string.Empty, actual.RemainingText());
+        }
     }
 }
