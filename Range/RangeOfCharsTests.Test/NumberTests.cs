@@ -22,19 +22,19 @@ namespace RangeOfChars.Test
         }
 
         [Fact]
-        public void For_0201_It_Should_Return_False()
+        public void For_0201_It_Should_Return_True()
         {
             var number = new Number();
             IMatch actual = number.Match("0201");
-            Assert.False(actual.Succes());
+            Assert.True(actual.Succes());
         }
 
         [Fact]
-        public void For_0201_It_Should_Return_0201()
+        public void For_0201_It_Should_Return_201()
         {
             var number = new Number();
             IMatch actual = number.Match("0201");
-            Assert.Equal("0201", actual.RemainingText());
+            Assert.Equal("201", actual.RemainingText());
         }
 
         [Fact]
@@ -54,19 +54,19 @@ namespace RangeOfChars.Test
         }
 
         [Fact]
-        public void For_0002_It_Should_Return_False()
+        public void For_0002_It_Should_Return_True()
         {
             var number = new Number();
             IMatch actual = number.Match("0002");
-            Assert.False(actual.Succes());
+            Assert.True(actual.Succes());
         }
 
         [Fact]
-        public void For_02_It_Should_Return_02()
+        public void For_02_It_Should_Return_2()
         {
             var number = new Number();
             IMatch actual = number.Match("02");
-            Assert.Equal("02", actual.RemainingText());
+            Assert.Equal("2", actual.RemainingText());
         }
 
         [Fact]
@@ -102,7 +102,7 @@ namespace RangeOfChars.Test
         }
 
         [Fact]
-        public void For_0Punct70Punct8_It_Should_Return_False()
+        public void For_0Punct70Punct8_It_Should_Return_True()
         {
             var number = new Number();
             IMatch actual = number.Match("0.70.8");
@@ -110,7 +110,7 @@ namespace RangeOfChars.Test
         }
 
         [Fact]
-        public void For_0Punct70Punct8_It_Should_Return_Comma8()
+        public void For_0Punct70Punct8_It_Should_Return_Punct8()
         {
             var number = new Number();
             IMatch actual = number.Match("0.70.8");
@@ -133,12 +133,20 @@ namespace RangeOfChars.Test
             Assert.Equal(string.Empty, actual.RemainingText());
         }
 
-        //[Fact]
-        //public void For_2Coma75Coma43_It_Should_Return_False()
-        //{
-        //    var number = new Number();
-        //    IMatch actual = number.Match("2.75.43");
-        //    Assert.False(actual.Succes());
-        //}
+        [Fact]
+        public void For_2Punct75Punct43_It_Should_Return_True()
+        {
+            var number = new Number();
+            IMatch actual = number.Match("2.75.43");
+            Assert.True(actual.Succes());
+        }
+
+        [Fact]
+        public void For_2Punct75Punct43_It_Should_Return_Punct43()
+        {
+            var number = new Number();
+            IMatch actual = number.Match("2.75.43");
+            Assert.Equal(".43", actual.RemainingText());
+        }
     }
 }
