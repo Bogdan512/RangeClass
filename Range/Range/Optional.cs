@@ -16,8 +16,9 @@ namespace RangeOfChars
         public IMatch Match(string text)
         {
             IMatch match = new Match(true, text);
+            Console.WriteLine("1 Optional : " + match.RemainingText());
             match = this.pattern.Match(match.RemainingText());
-
+            Console.WriteLine("2 Optional : " + match.RemainingText());
             return new Match(true, match.RemainingText());
         }
     }

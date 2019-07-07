@@ -69,14 +69,5 @@ namespace RangeOfChars.Test
             IMatch actual = character.Match(text);
             Assert.False(actual.Succes());
         }
-
-        [Fact]
-        public void For_Null_Should_Return_Null()
-        {
-            var character = new Character('f');
-            string text = null;
-            IMatch actual = character.Match(text);
-            Assert.Null(actual.RemainingText());
-        }
     }
 }
