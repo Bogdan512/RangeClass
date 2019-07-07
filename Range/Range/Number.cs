@@ -15,7 +15,6 @@ namespace RangeOfChars
             var digit = new Range('0', '9');
             var digits = new Many(digit);
             var sign = new Choice(new Sequance(minus, plus));
-
             var bigOrSmall = new Choice(new Character('E'), new Character('e'));
             var natural = new Choice(zeroChar, new Sequance(new Range('1', '9'), digits));
             var integer = new Sequance(minus, natural);

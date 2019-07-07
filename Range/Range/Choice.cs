@@ -18,7 +18,6 @@ namespace RangeOfChars
             foreach (var pattern in this.patterns)
             {
                 IMatch match = pattern.Match(text);
-                Console.WriteLine("4 Choice : " + text + " " + pattern.ToString() + " " + match.Succes());
                 if (match.Succes())
                 {
 
