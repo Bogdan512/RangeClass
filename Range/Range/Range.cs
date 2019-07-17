@@ -8,24 +8,20 @@ namespace RangeOfChars
     {
         char start;
         char end;
+        string excluded;
 
-        public Range(char start, char end)
+        public Range(char start, char end, string excluded = "")
         {
             this.start = start;
             this.end = end;
+            this.excluded = excluded;
         }
 
         public IMatch Match(string text)
         {
-            if (string.IsNullOrEmpty(text) || text[0] < start || text[0] > end)
+            if (string.IsNullOrEmpty(text) || this.excluded.Contains(text[0]) || text[0] < this.start || text[0] > this.end)
             {
                 return new Match(false, text);
-            }
-
-            if (text.Length == 1)
-            {
-                text = string.Empty;
-                return new Match(true, text);
             }
             else
             {

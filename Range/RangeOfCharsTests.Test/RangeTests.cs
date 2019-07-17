@@ -24,6 +24,22 @@ namespace RangeOfChars.Test
         }
 
         [Fact]
+        public void For_IPattern_Range_0_9_4_And_String_45_Should_Return_True()
+        {
+            var digits = new Many(new Range('0', '9', "4"));
+            IMatch actual = digits.Match("45");
+            Assert.True(actual.Succes());
+        }
+
+        [Fact]
+        public void For_IPattern_Range_0_9_4_And_String_45_Should_Return_45()
+        {
+            var digits = new Range('0', '9', "4");
+            IMatch actual = digits.Match("45");
+            Assert.Equal("45", actual.RemainingText());
+        }
+
+        [Fact]
         public void For_abc_Should_Return_False_From_Range_b_To_f()
         {
             var digits = new Range('b', 'f');

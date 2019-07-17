@@ -117,6 +117,8 @@ namespace RangeOfChars.Test
 
             IMatch actual = list.Match("1 \n");
             Assert.Equal(" \n", actual.RemainingText());
+            //IMatch actual = list.Match("1; 22  ;\n 333 ");
+            //Assert.Equal(string.Empty, actual.RemainingText());
         }
 
         [Fact]

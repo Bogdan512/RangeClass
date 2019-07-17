@@ -26,7 +26,7 @@ namespace RangeOfChars.Test
                 new Range('1', '9')
             );
             IMatch actual = digit.Match("024");
-            Assert.Equal("24",actual.RemainingText());
+            Assert.Equal("24", actual.RemainingText());
         }
 
         [Fact]
