@@ -86,5 +86,13 @@ namespace RangeOfChars.Test
             IMatch actual = text.Match("\"12 4Text\u0023\"");
             Assert.True(actual.Succes());
         }
+
+        [Fact]
+        public void For_124SolidusText56_It_Should_Return_EmptyString()
+        {
+            var text = new String();
+            IMatch actual = text.Match("\"12 4Text56\"");
+            Assert.Equal(string.Empty, actual.RemainingText());
+        }
     }
 }
