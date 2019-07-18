@@ -56,6 +56,22 @@ namespace RangeOfChars.Test
         }
 
         [Fact]
+        public void For_IPattern_Range_0_9_426_And_String_245_Should_Return_False()
+        {
+            var digits = new Range('0', '9', "426");
+            IMatch actual = digits.Match("245");
+            Assert.False(actual.Succes());
+        }
+
+        [Fact]
+        public void For_IPattern_Range_0_9_426_And_String_245_Should_Return_245()
+        {
+            var digits = new Range('0', '9', "426");
+            IMatch actual = digits.Match("245");
+            Assert.Equal("245", actual.RemainingText());
+        }
+
+        [Fact]
         public void For_abc_Should_Return_False_From_Range_b_To_f()
         {
             var digits = new Range('b', 'f');
