@@ -10,10 +10,14 @@ namespace RangeOfChars
 
         public String()
         {
-            var character = new Range('\u0020', '\u0fff', "\"\\");
+            var character = new Range('\u0020', '\uffff', "\"\\");
             var characters = new Many(character);
             var quotationmark = new Character('"');
-            this.pattern = new Sequance(quotationmark, new Optional(characters), quotationmark);
+            var escapees = new Any("\\\b\f\n\r\t");
+            var escape = new Sequance(new Optional(new Sequance(new Many(escapees))));
+            var charactersReadyAndEscape = new Sequance(quotationmark, new Optional(characters), escape, quotationmark);
+
+            this.pattern = charactersReadyAndEscape;
         }
 
         public IMatch Match(string text)

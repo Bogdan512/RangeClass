@@ -94,5 +94,21 @@ namespace RangeOfChars.Test
             IMatch actual = text.Match("\"12 4Text56\"");
             Assert.Equal(string.Empty, actual.RemainingText());
         }
+
+        [Fact]
+        public void For_u002_It_Should_Return_True()
+        {
+            var text = new String();
+            IMatch actual = text.Match("\"\u002f\"");
+            Assert.True(actual.Succes());
+        }
+
+        [Fact]
+        public void For_SolidusNewLine_It_Should_Return_EmptyString()
+        {
+            var text = new String();
+            IMatch actual = text.Match("\"\n\r\t\"");
+            Assert.Equal(string.Empty, actual.RemainingText());
+        }
     }
 }
