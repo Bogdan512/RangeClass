@@ -104,10 +104,18 @@ namespace RangeOfChars.Test
         }
 
         [Fact]
+        public void For_u002_It_Should_Return_EmptyString()
+        {
+            var text = new String();
+            IMatch actual = text.Match("\"\u002f\"");
+            Assert.Equal(string.Empty, actual.RemainingText());
+        }
+
+        [Fact]
         public void For_SolidusNewLine_It_Should_Return_EmptyString()
         {
             var text = new String();
-            IMatch actual = text.Match("\"\n\r\t\"");
+            IMatch actual = text.Match("\"/\n\r\t\"");
             Assert.Equal(string.Empty, actual.RemainingText());
         }
     }
