@@ -118,5 +118,13 @@ namespace RangeOfChars.Test
             IMatch actual = text.Match("\"/\n\r\t\"");
             Assert.Equal(string.Empty, actual.RemainingText());
         }
+
+        [Fact]
+        public void For_abcNewLinedef_It_Should_Return_EmptyString()
+        {
+            var text = new String();
+            IMatch actual = text.Match("\"abc\ndef\"");
+            Assert.Equal(string.Empty, actual.RemainingText());
+        }
     }
 }

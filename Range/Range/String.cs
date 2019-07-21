@@ -11,11 +11,10 @@ namespace RangeOfChars
         public String()
         {
             var character = new Range('\u0020', '\uffff', "\"\\");
-            var characters = new Many(character);
             var quotationmark = new Character('"');
-            var escapees = new Any("\\/\b\f\n\r\t");
-            var escape = new Sequance(new Optional(new Sequance(new Many(escapees))));
-            this.pattern = new Sequance(quotationmark, new Optional(characters), new Optional(escape), quotationmark);
+            var escapedChars = new Any("\\/\b\f\n\r\t");
+            var choice = new Choice(escapedChars, character);
+            this.pattern = new Sequance(quotationmark, new Many(choice), quotationmark);
         }
 
         public IMatch Match(string text)

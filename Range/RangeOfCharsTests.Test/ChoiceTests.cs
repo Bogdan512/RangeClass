@@ -90,7 +90,7 @@ namespace RangeOfChars.Test
             );
 
             IMatch actual = hex.Match("269");
-            Assert.Equal("69",actual.RemainingText());
+            Assert.Equal("69", actual.RemainingText());
         }
 
         [Fact]
