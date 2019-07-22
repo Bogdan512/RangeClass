@@ -127,14 +127,22 @@ namespace RangeOfChars.Test
             Assert.Equal(string.Empty, actual.RemainingText());
         }
 
-        
 
-            [Fact]
+
+        [Fact]
         public void For_aReverseSolidu1xbc_It_Should_Return_EmptyString()
         {
             var text = new String();
             IMatch actual = text.Match("\"a\\u1xbc\"");
             Assert.Equal("\"a\\u1xbc\"", actual.RemainingText());
+        }
+
+        [Fact]
+        public void For_quotationmark_It_Should_Return_EmptyString()
+        {
+            var text = new String();
+            IMatch actual = text.Match("\"\\\"\"");
+            Assert.Equal(string.Empty, actual.RemainingText());
         }
     }
 }

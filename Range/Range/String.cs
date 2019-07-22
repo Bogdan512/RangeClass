@@ -10,18 +10,25 @@ namespace RangeOfChars
 
         public String()
         {
-            var character = new Range('\u0020', '\uffff', "\"\\");
+            var hex = new Choice(
+                        new Range('0', '9'),
+                        new Range('a', 'f'),
+                        new Range('A', 'F'));
+            var escaped = new Sequance(
+                            new Character('\\'),
+                            new Choice(
+                                new Any("\"/bfnrt"),
+                                new Sequance(
+                                    new Character('u'), hex, hex, hex, hex)));
+            var character = new Choice(
+                                  new Range('\u0020', '\uffff', "\"\\"),
+                                  escaped);
+            var characters = new Many(character);
             var quotationmark = new Character('"');
-            var escapeChar = new Character('\\');
-            var escapedChars = new Sequance(escapeChar, new Any("/bfnrt"));
-            var digit = new Range('0', '9');
-            var charAF = new Range('A', 'F');
-            var charaf = new Range('a', 'f');
-            var hexchar = new Choice(digit, charAF, charaf);
-            var hex = new Sequance(hexchar, hexchar, hexchar, hexchar);
-            var u = new Sequance(escapeChar, new Character('u'), hex);
-            var choice = new Choice(escapedChars, character, u);
-            this.pattern = new Sequance(quotationmark, new Many(choice), quotationmark);
+            this.pattern = new Sequance(
+                              quotationmark,
+                              characters,
+                              quotationmark);
         }
 
         public IMatch Match(string text)
