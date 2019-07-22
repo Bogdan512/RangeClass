@@ -134,7 +134,7 @@ namespace RangeOfChars.Test
         {
             var text = new String();
             IMatch actual = text.Match("\"a\\u1xbc\"");
-            Assert.Equal(string.Empty, actual.RemainingText());
+            Assert.Equal("\"a\\u1xbc\"", actual.RemainingText());
         }
     }
 }
