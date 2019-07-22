@@ -115,7 +115,7 @@ namespace RangeOfChars.Test
         public void For_SolidusNewLine_It_Should_Return_EmptyString()
         {
             var text = new String();
-            IMatch actual = text.Match("\"\\n\\r\\t\"");
+            IMatch actual = text.Match("\"\\/\\n\\r\\t\"");
             Assert.Equal(string.Empty, actual.RemainingText());
         }
 
