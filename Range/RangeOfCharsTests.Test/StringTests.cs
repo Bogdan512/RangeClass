@@ -75,7 +75,7 @@ namespace RangeOfChars.Test
         public void For_12_Space_4SText_Solidus_Hex_It_Should_Return_EmptyString()
         {
             var text = new String();
-            IMatch actual = text.Match("\"12 4Text\u0023\"");
+            IMatch actual = text.Match("\"12 4Text\\u0023\"");
             Assert.Equal(string.Empty, actual.RemainingText());
         }
 
@@ -115,7 +115,7 @@ namespace RangeOfChars.Test
         public void For_SolidusNewLine_It_Should_Return_EmptyString()
         {
             var text = new String();
-            IMatch actual = text.Match("\"/\n\r\t\"");
+            IMatch actual = text.Match("\"\\n\\r\\t\"");
             Assert.Equal(string.Empty, actual.RemainingText());
         }
 
@@ -123,7 +123,7 @@ namespace RangeOfChars.Test
         public void For_abcNewLinedef_It_Should_Return_EmptyString()
         {
             var text = new String();
-            IMatch actual = text.Match("\"abc\ndef\"");
+            IMatch actual = text.Match("\"abc\\ndef\"");
             Assert.Equal(string.Empty, actual.RemainingText());
         }
 
@@ -133,7 +133,7 @@ namespace RangeOfChars.Test
         public void For_aReverseSolidu1xbc_It_Should_Return_EmptyString()
         {
             var text = new String();
-            IMatch actual = text.Match("\"a\u1xbc\"");
+            IMatch actual = text.Match("\"a\\u1xbc\"");
             Assert.Equal(string.Empty, actual.RemainingText());
         }
     }
