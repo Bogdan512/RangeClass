@@ -7,6 +7,7 @@ namespace RangeOfChars
     public class Choice : IPattern
     {
         IPattern[] patterns;
+        //List<IPattern> patterns;
 
         public Choice(params IPattern[] patterns)
         {
@@ -25,7 +26,21 @@ namespace RangeOfChars
                 }
             }
 
-            return new Match(false, text);
+            return new Match();
+        }
+
+        public void Add(Choice choice)
+        {
+           //List<IPattern> value = new List<IPattern>();
+
+            var wsSingle = new Choice(
+                        new Character('\u0020'),
+                        new Character('\u000D'),
+                        new Character('\u000A'),
+                        new Character('\u0009'));
+            var ws = new Many(wsSingle);
+            var openBracket = new Character('[');
+            var closeBracket = new Character(']');
         }
     }
 }

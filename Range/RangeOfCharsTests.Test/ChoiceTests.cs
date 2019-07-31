@@ -162,16 +162,12 @@ namespace RangeOfChars.Test
 
             var digit = new Choice(
                 new Character('0'),
-                new Range('1', '9')
-            );
-
+                new Range('1', '9'));
             var hex = new Choice(
                 digit,
                 new Choice(
                     new Range('a', 'f'),
-                    new Range('A', 'F')
-                )
-            );
+                    new Range('A', 'F')));
 
             IMatch actual = hex.Match(string.Empty);
             Assert.Equal(string.Empty, actual.RemainingText());
@@ -225,16 +221,31 @@ namespace RangeOfChars.Test
 
             var digit = new Choice(
                 new Character('0'),
-                new Range('1', '9')
-            );
+                new Range('1', '9'));
 
             var hex = new Choice(
                 digit,
                 new Choice(
                     new Range('a', 'f'),
-                    new Range('A', 'F')
-                )
-            );
+                    new Range('A', 'F')));
+
+            IMatch actual = hex.Match("8");
+            Assert.Equal(string.Empty, actual.RemainingText());
+        }
+
+        [Fact]
+        public void Add_Method_Should_Return_Empty_String_For_True_For_8_Hex()
+        {
+
+            //var digit = new Choice(
+            //    new Character('0'),
+            //    new Range('1', '9'));
+
+            var hex = new Choice(
+                    new Range('a', 'f'),
+                    new Range('A', 'F'));
+
+            hex.Add(range);
 
             IMatch actual = hex.Match("8");
             Assert.Equal(string.Empty, actual.RemainingText());
