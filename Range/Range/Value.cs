@@ -29,10 +29,10 @@ namespace RangeOfChars
             var initValue = new Choice(initArray, str, number, isTrue, isFalse, isNull);
             var comma = new Character(',');
             var element = new Sequance(ws, initValue, ws);
-            var elements = new Choice(element, new List(new Many(element), comma));
-            //var elements = new Choice(element, new Sequance(elenebet, comma, new Many(element)));
-            var array = new Choice(initArray, elements);
-            var value = new Choice(array, str, number, isTrue, isFalse, isNull); ;
+            //var elements = new Choice(element, new List(new Many(element), comma));
+            var elements = new Choice(element, new Sequance(element, comma, new Many(element)));
+            var array = new Choice(initArray, new Sequance(opendBracket, elements, closedBracket));
+            var value = new Choice(array, str, number, isTrue, isFalse, isNull);
             this.patern = value;
         }
 
