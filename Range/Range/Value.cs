@@ -15,8 +15,9 @@ namespace RangeOfChars
             var isTrue = new Text("true");
             var isFalse = new Text("false");
             var isNull = new Text("null");
-            var value = new Choice(str, number, isTrue, isFalse, isNull);
+            var whitespace = new Sequance(new Character('\\'), new Any("bnrt"));
             var wsSingle = new Choice(
+                        whitespace,
                         new Character('\u0020'),
                         new Character('\u000D'),
                         new Character('\u000A'),
@@ -24,8 +25,9 @@ namespace RangeOfChars
             var ws = new Many(wsSingle);
             var opendBracket = new Character('[');
             var closedBracket = new Character(']');
-            var emptyArray = new Sequance(opendBracket, ws, closedBracket);
-            this.patern = new Choice(value, emptyArray);
+            var array = new Sequance(opendBracket, ws, closedBracket);
+            var value = new Choice(array, str, number, isTrue, isFalse, isNull);
+            this.patern = value;
         }
 
         public IMatch Match(string text)

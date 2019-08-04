@@ -54,5 +54,13 @@ namespace RangeOfChars.Test
             IMatch actual = value.Match("[]");
             Assert.Equal(string.Empty, actual.RemainingText());
         }
+
+        [Fact]
+        public void For_Tab_Inside_Brackets_Should_Return_EmptyString()
+        {
+            var value = new Value();
+            IMatch actual = value.Match("[\u0009\t]");
+            Assert.Equal(string.Empty, actual.RemainingText());
+        }
     }
 }
