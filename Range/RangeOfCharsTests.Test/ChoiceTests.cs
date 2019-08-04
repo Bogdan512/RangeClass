@@ -236,18 +236,26 @@ namespace RangeOfChars.Test
         [Fact]
         public void Add_Method_Should_Return_Empty_String_For_True_For_8_Hex()
         {
-
-            //var digit = new Choice(
-            //    new Character('0'),
-            //    new Range('1', '9'));
-
             var hex = new Choice(
                     new Range('a', 'f'),
                     new Range('A', 'F'));
 
-            hex.Add(range);
+            hex.Add(new Range('0', '9'));
 
             IMatch actual = hex.Match("8");
+            Assert.Equal(string.Empty, actual.RemainingText());
+        }
+
+        [Fact]
+        public void Add_Method_For_Number_Should_Return_Empty_String_For_True_For_8_Hex()
+        {
+            var hex = new Choice(
+                    new Range('a', 'f'),
+                    new Range('A', 'F'));
+
+            hex.Add(new Number());
+
+            IMatch actual = hex.Match("12.123e+3");
             Assert.Equal(string.Empty, actual.RemainingText());
         }
     }
