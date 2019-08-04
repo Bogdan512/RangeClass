@@ -12,7 +12,10 @@ namespace RangeOfChars
         {
             var str = new String();
             var number = new Number();
-            var value = new Choice(str, number);
+            var isTrue = new Text("true");
+            var isFalse = new Text("false");
+            var isNull = new Text("null");
+            var value = new Choice(str, number, isTrue, isFalse, isNull);
             this.patern = value;
         }
 

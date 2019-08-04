@@ -22,5 +22,29 @@ namespace RangeOfChars.Test
             IMatch actual = value.Match("24");
             Assert.Equal(string.Empty, actual.RemainingText());
         }
+
+        [Fact]
+        public void For_Text_truex_Should_Return_x()
+        {
+            var value = new Value();
+            IMatch actual = value.Match("truex");
+            Assert.Equal("x", actual.RemainingText());
+        }
+
+        [Fact]
+        public void For_Text_falsex_Should_Return_x()
+        {
+            var value = new Value();
+            IMatch actual = value.Match("falsex");
+            Assert.Equal("x", actual.RemainingText());
+        }
+
+        [Fact]
+        public void For_Text_nullx_Should_Return_x()
+        {
+            var value = new Value();
+            IMatch actual = value.Match("nullx");
+            Assert.Equal("x", actual.RemainingText());
+        }
     }
 }
