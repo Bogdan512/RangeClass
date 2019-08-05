@@ -22,16 +22,10 @@ namespace RangeOfChars
                         new Character('\u000D'),
                         new Character('\u000A'),
                         new Character('\u0009'));
-            var ws = new Many(wsSingle);
+            var ws = new Optional(new Many(wsSingle));
             var opendBracket = new Character('[');
             var closedBracket = new Character(']');
-            var initArray = new Sequance(opendBracket, ws, closedBracket);
-            var initValue = new Choice(initArray, str, number, isTrue, isFalse, isNull);
-            var comma = new Character(',');
-            var element = new Sequance(ws, initValue, ws);
-            //var elements = new Choice(element, new List(new Many(element), comma));
-            var elements = new Choice(element, new Sequance(element, comma, new Many(element)));
-            var array = new Choice(initArray, new Sequance(opendBracket, elements, closedBracket));
+            var array = new Sequance(ws, opendBracket, ws, closedBracket, ws);
             var value = new Choice(array, str, number, isTrue, isFalse, isNull);
             this.patern = value;
         }
