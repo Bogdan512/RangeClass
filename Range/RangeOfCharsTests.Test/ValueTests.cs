@@ -59,7 +59,7 @@ namespace RangeOfChars.Test
         public void For_Tab_Inside_Brackets_Should_Return_EmptyString()
         {
             var value = new Value();
-            IMatch actual = value.Match("[\u0009\t]");
+            IMatch actual = value.Match("\"[\\t]\"");
             Assert.Equal(string.Empty, actual.RemainingText());
         }
 
