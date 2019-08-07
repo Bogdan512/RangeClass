@@ -23,8 +23,9 @@ namespace RangeOfChars
             var value = new Choice(array, str, number, isTrue, isFalse, isNull);
             var element = new Sequance(ws, value, ws);
             var elements = new Choice(new Sequance(element, comma, new Many(element)), element);
-            var arrayComplete = new Choice(array, new Sequance(opendBracket, elements, closedBracket));
-            this.patern = arrayComplete;
+            var arrayComplete = new Choice(array,elements, new Sequance(opendBracket, elements, closedBracket));
+            var valueNoObj = new Choice(arrayComplete, str, number, isTrue, isFalse, isNull);
+            this.patern = valueNoObj;
 
         }
 
