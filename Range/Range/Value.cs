@@ -21,7 +21,9 @@ namespace RangeOfChars
             var comma = new Character(',');
             var array = new Sequance(ws, opendBracket, ws, closedBracket, ws);
             var value = new Choice(array, str, number, isTrue, isFalse, isNull);
-            this.patern = value;
+            var element = new Sequance(ws, value, ws);
+
+            this.patern = element;
         }
 
         public IMatch Match(string text)
