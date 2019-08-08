@@ -27,7 +27,6 @@ namespace RangeOfChars
             var arrayComplete = new Sequance(opendBracket, elements, closedBracket);
             var valueNoObj = new Choice(arrayComplete, str, number, isTrue, isFalse, isNull);
             this.patern = valueNoObj;
-
         }
 
         public IMatch Match(string text)
