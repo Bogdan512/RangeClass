@@ -31,8 +31,8 @@ namespace RangeOfChars
             var obj = new Sequance(ws, opendCurlyBracket, ws, closedCurlyBracket, ws);
             var objectComplete = new Sequance(ws, opendCurlyBracket, ws, members, ws, closedCurlyBracket, ws);
             var arrayComplete = new Sequance(ws, opendBracket, ws, elements, ws, closedBracket, ws);
-            var valueNoObj = new Choice(arrayComplete, str, number, isTrue, isFalse, isNull);
-            this.patern = objectComplete;
+            var valueComplete = new Choice(objectComplete, arrayComplete, str, number, isTrue, isFalse, isNull);
+            this.patern = valueComplete;
         }
 
         public IMatch Match(string text)
