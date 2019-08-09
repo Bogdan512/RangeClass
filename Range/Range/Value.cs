@@ -25,9 +25,10 @@ namespace RangeOfChars
             var element = new Sequance(ws, value, ws);
             var elements = new List(element, comma);
             var member = new Sequance(ws, str, ws, colon, element);
+            var members = new List(member,comma);
             var arrayComplete = new Sequance(ws, opendBracket, ws, elements, ws, closedBracket, ws);
             var valueNoObj = new Choice(arrayComplete, str, number, isTrue, isFalse, isNull);
-            this.patern = member;
+            this.patern = members;
         }
 
         public IMatch Match(string text)

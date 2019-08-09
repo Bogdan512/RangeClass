@@ -94,5 +94,13 @@ namespace RangeOfChars.Test
             IMatch actual = value.Match("\"This is string\" : true");
             Assert.Equal(string.Empty, actual.RemainingText());
         }
+
+        [Fact]
+        public void For_Members_Should_Return_EmptyString()
+        {
+            var value = new Value();
+            IMatch actual = value.Match("\"This is string\" : true , \"This is also string\" : false");
+            Assert.Equal(string.Empty, actual.RemainingText());
+        }
     }
 }
