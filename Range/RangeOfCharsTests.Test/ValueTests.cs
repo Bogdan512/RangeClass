@@ -86,5 +86,13 @@ namespace RangeOfChars.Test
             IMatch actual = value.Match("[true,24.45e+5]");
             Assert.Equal(string.Empty, actual.RemainingText());
         }
+
+        [Fact]
+        public void For_Member_Should_Return_EmptyString()
+        {
+            var value = new Value();
+            IMatch actual = value.Match("\"This is string\" : true");
+            Assert.Equal(string.Empty, actual.RemainingText());
+        }
     }
 }

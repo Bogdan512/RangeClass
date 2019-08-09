@@ -19,13 +19,15 @@ namespace RangeOfChars
             var opendBracket = new Character('[');
             var closedBracket = new Character(']');
             var comma = new Character(',');
+            var colon = new Character(':');
             var array = new Sequance(ws, opendBracket, ws, closedBracket, ws);
             var value = new Choice(array, str, number, isTrue, isFalse, isNull);
             var element = new Sequance(ws, value, ws);
             var elements = new List(element, comma);
+            var member = new Sequance(ws, str, ws, colon, element);
             var arrayComplete = new Sequance(ws, opendBracket, ws, elements, ws, closedBracket, ws);
             var valueNoObj = new Choice(arrayComplete, str, number, isTrue, isFalse, isNull);
-            this.patern = valueNoObj;
+            this.patern = member;
         }
 
         public IMatch Match(string text)
