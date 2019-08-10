@@ -27,7 +27,7 @@ namespace RangeOfChars
             var elements = new List(element, comma);
             var member = new Sequance(ws, str, ws, colon, element);
             var members = new List(member, comma);
-            var obj= new Sequance(ws, opendCurlyBracket, ws, members, ws, closedCurlyBracket, ws);
+            var obj = new Sequance(ws, opendCurlyBracket, ws, members, ws, closedCurlyBracket, ws);
             var array = new Sequance(ws, opendBracket, ws, elements, ws, closedBracket, ws);
             value.Add(array);
             value.Add(obj);

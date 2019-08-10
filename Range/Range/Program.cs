@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace RangeOfChars
 {
@@ -6,9 +7,20 @@ namespace RangeOfChars
     {
         static void Main()
         {
-            var c = new Character('"');
-            IMatch actual = c.Match("\"");
-            Console.WriteLine(actual.RemainingText());
+            var json = File.ReadAllText(@"D:\Repositories\Example2JSON.json");
+            var value = new Value();
+            IMatch result = value.Match(json);
+            string testResult = result.RemainingText();
+            Console.WriteLine(json + "\n");
+
+            if (result.RemainingText() == string.Empty)
+            {
+                Console.WriteLine("Valid Json");
+            }
+            else
+            {
+                Console.WriteLine("Not Valid Json");
+            }
 
             Console.Read();
         }

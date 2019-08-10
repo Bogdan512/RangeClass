@@ -119,13 +119,13 @@ namespace RangeOfChars.Test
             Assert.Equal(string.Empty, actual.RemainingText());
         }
 
-        //[Fact]
-        //public void For_ValueComplete_Should_Return_EmptyString()
-        //{
-        //    var value = new Value();
-        //    IMatch actual = value.Match("[{\"\":8}]");
-        //    Assert.Equal(string.Empty, actual.RemainingText());
-        //}
+        [Fact]
+        public void For_ValueComplete_Should_Return_EmptyString()
+        {
+            var value = new Value();
+            IMatch actual = value.Match("[{\"This is string\" : true , \"This is also string\" : false}]");
+            Assert.Equal(string.Empty, actual.RemainingText());
+        }
     }
 }
 
