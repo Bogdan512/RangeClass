@@ -22,17 +22,16 @@ namespace RangeOfChars
             var closedCurlyBracket = new Character('}');
             var comma = new Character(',');
             var colon = new Character(':');
-            var array = new Sequance(ws, opendBracket, ws, closedBracket, ws);
-            var value = new Choice(array, str, number, isTrue, isFalse, isNull);
+            var value = new Choice(str, number, isTrue, isFalse, isNull);
             var element = new Sequance(ws, value, ws);
             var elements = new List(element, comma);
             var member = new Sequance(ws, str, ws, colon, element);
             var members = new List(member, comma);
-            var obj = new Sequance(ws, opendCurlyBracket, ws, closedCurlyBracket, ws);
-            var objectComplete = new Sequance(ws, opendCurlyBracket, ws, members, ws, closedCurlyBracket, ws);
-            var arrayComplete = new Sequance(ws, opendBracket, ws, elements, ws, closedBracket, ws);
-            var valueComplete = new Choice(objectComplete, arrayComplete, str, number, isTrue, isFalse, isNull);
-            this.patern = valueComplete;
+            var obj= new Sequance(ws, opendCurlyBracket, ws, members, ws, closedCurlyBracket, ws);
+            var array = new Sequance(ws, opendBracket, ws, elements, ws, closedBracket, ws);
+            value.Add(array);
+            value.Add(obj);
+            this.patern = value;
         }
 
         public IMatch Match(string text)

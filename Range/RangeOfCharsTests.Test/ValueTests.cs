@@ -83,7 +83,7 @@ namespace RangeOfChars.Test
         public void For_Complete_Array_Should_Return_EmptyString()
         {
             var value = new Value();
-            IMatch actual = value.Match("[true,24.45e+5]");
+            IMatch actual = value.Match("[true,24.45e+5,8]");
             Assert.Equal(string.Empty, actual.RemainingText());
         }
 
@@ -118,5 +118,14 @@ namespace RangeOfChars.Test
             IMatch actual = value.Match("{\"This is string\" : true , \"This is also string\" : false}");
             Assert.Equal(string.Empty, actual.RemainingText());
         }
+
+        //[Fact]
+        //public void For_ValueComplete_Should_Return_EmptyString()
+        //{
+        //    var value = new Value();
+        //    IMatch actual = value.Match("[{\"\":8}]");
+        //    Assert.Equal(string.Empty, actual.RemainingText());
+        //}
     }
 }
+
