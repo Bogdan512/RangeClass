@@ -7,7 +7,6 @@ namespace RangeOfChars
     {
         static void Main(string[] args)
         {
-            //var json = File.ReadAllText(@"D:\Repositories\Example2JSON.json");
             string str = File.ReadAllText(args[0]);
             var value = new Value();
             IMatch result = value.Match(str);
