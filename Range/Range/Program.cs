@@ -5,13 +5,14 @@ namespace RangeOfChars
 {
     class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
-            var json = File.ReadAllText(@"D:\Repositories\Example2JSON.json");
+            //var json = File.ReadAllText(@"D:\Repositories\Example2JSON.json");
+            string str = File.ReadAllText(args[0]);
             var value = new Value();
-            IMatch result = value.Match(json);
+            IMatch result = value.Match(str);
             string testResult = result.RemainingText();
-            Console.WriteLine(json + "\n");
+            Console.WriteLine(str + "\n");
 
             if (result.RemainingText() == string.Empty)
             {
